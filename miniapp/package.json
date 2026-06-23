@@ -1,0 +1,17 @@
+{
+  "name": "zhongshi-miniapp",
+  "version": "1.0.0",
+  "description": "中试服务管理系统 uni-app",
+  "dependencies": {
+    "@dcloudio/uni-app": "3.0.0-4010520240507001",
+    "@dcloudio/uni-app-plus": "3.0.0-4010520240507001",
+    "@dcloudio/uni-components": "3.0.0-4010520240507001",
+    "@dcloudio/uni-mp-weixin": "3.0.0-4010520240507001",
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@dcloudio/types": "^3.4.8",
+    "@dcloudio/vite-plugin-uni": "3.0.0-4010520240507001",
+    "vite": "^5.2.8"
+  }
+}

@@ -1,0 +1,1541 @@
+---
+page_id: Web-公共-登录页
+page_title: 登录页
+portal: 公共
+role: 公共用户
+module_full: 公共
+activity_node: 公共页面
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 公共
+png: 原型图/Web/00-公共/Web-公共-登录页.png
+html: 原型图/Web/00-公共/Web-公共-登录页.html
+nav_from:
+  - 系统入口
+nav_to:
+  - 登录后按角色进入对应门户首页
+components: [登录表单, 角色路由提示]
+status_tags: [待处理, 办理中, 已完成]
+---
+page_id: Web-中心-公共-管理工作台首页
+page_title: 管理工作台首页
+portal: 中心管理端
+role: 中试调度员
+module_full: 公共
+activity_node: 公共页面
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 公共
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-公共-管理工作台首页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-公共-管理工作台首页.html
+nav_from:
+  - 系统入口
+nav_to:
+  - 进入五大业务模块待办/列表
+components: [首页卡片, 快捷入口, 待办列表]
+status_tags: [待处理, 办理中, 已完成]
+---
+page_id: Web-企业-公共-企业门户首页
+page_title: 企业门户首页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 公共
+activity_node: 公共页面
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 公共
+png: 原型图/Web/02-企业门户/Web-企业-公共-企业门户首页.png
+html: 原型图/Web/02-企业门户/Web-企业-公共-企业门户首页.html
+nav_from:
+  - 系统入口
+nav_to:
+  - 进入五大业务模块待办/列表
+components: [首页卡片, 快捷入口, 待办列表]
+status_tags: [待处理, 办理中, 已完成]
+---
+page_id: Web-技术-公共-技术人员首页
+page_title: 技术人员首页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 公共
+activity_node: 公共页面
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 公共
+png: 原型图/Web/03-技术人员门户/Web-技术-公共-技术人员首页.png
+html: 原型图/Web/03-技术人员门户/Web-技术-公共-技术人员首页.html
+nav_from:
+  - 系统入口
+nav_to:
+  - 进入五大业务模块待办/列表
+components: [首页卡片, 快捷入口, 待办列表]
+status_tags: [待处理, 办理中, 已完成]
+---
+page_id: 小程序-企业-公共-首页
+page_title: 首页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 公共
+activity_node: 公共页面
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 公共
+png: 原型图/小程序/企业端/小程序-企业-公共-首页.png
+html: 原型图/小程序/企业端/小程序-企业-公共-首页.html
+nav_from:
+  - 系统入口
+nav_to:
+  - 进入五大业务模块待办/列表
+components: [首页卡片, 快捷入口, 待办列表]
+status_tags: [待处理, 办理中, 已完成]
+---
+page_id: 小程序-技术-公共-首页
+page_title: 首页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 公共
+activity_node: 公共页面
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 公共
+png: 原型图/小程序/技术人员端/小程序-技术-公共-首页.png
+html: 原型图/小程序/技术人员端/小程序-技术-公共-首页.html
+nav_from:
+  - 系统入口
+nav_to:
+  - 进入五大业务模块待办/列表
+components: [首页卡片, 快捷入口, 待办列表]
+status_tags: [待处理, 办理中, 已完成]
+---
+page_id: Web-企业-需求-需求预览确认页
+page_title: 需求预览确认页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试需求管理
+activity_node: 需求信息确认
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-1
+png: 原型图/Web/02-企业门户/Web-企业-需求-需求预览确认页.png
+html: 原型图/Web/02-企业门户/Web-企业-需求-需求预览确认页.html
+nav_from:
+  - 企业门户首页 → 中试需求管理 → 需求预览确认页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试需求管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-需求-需求预览确认页
+page_title: 需求预览确认页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试需求管理
+activity_node: 需求信息确认
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-1
+png: 原型图/小程序/企业端/小程序-企业-需求-需求预览确认页.png
+html: 原型图/小程序/企业端/小程序-企业-需求-需求预览确认页.html
+nav_from:
+  - 企业门户首页 → 中试需求管理 → 需求预览确认页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试需求管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-需求-需求填报页
+page_title: 需求填报页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试需求管理
+activity_node: 中试需求提交
+tertiary_function: 中试需求提交
+platform: Web
+size: 1920x1080
+activity_figure: 图3-1
+png: 原型图/Web/02-企业门户/Web-企业-需求-需求填报页.png
+html: 原型图/Web/02-企业门户/Web-企业-需求-需求填报页.html
+nav_from:
+  - 企业门户首页 → 中试需求管理 → 需求填报页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试需求管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 面包屑, 分组表单, 附件上传, 提交按钮, 校验提示]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-需求-需求填报页
+page_title: 需求填报页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试需求管理
+activity_node: 中试需求提交
+tertiary_function: 中试需求提交
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-1
+png: 原型图/小程序/企业端/小程序-企业-需求-需求填报页.png
+html: 原型图/小程序/企业端/小程序-企业-需求-需求填报页.html
+nav_from:
+  - 企业门户首页 → 中试需求管理 → 需求填报页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试需求管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 面包屑, 分组表单, 附件上传, 提交按钮, 校验提示]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-需求-需求受理工作台
+page_title: 需求受理工作台
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试需求管理
+activity_node: 需求受理登记
+tertiary_function: 需求受理登记
+platform: Web
+size: 1920x1080
+activity_figure: 图3-1
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-需求-需求受理工作台.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-需求-需求受理工作台.html
+nav_from:
+  - 中心管理端首页 → 中试需求管理 → 需求受理工作台
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 面包屑, 筛选栏, 数据表格, 分页, 操作列]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-需求-退回意见页
+page_title: 退回意见页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试需求管理
+activity_node: 需求退回通知
+tertiary_function: 需求退回通知
+platform: Web
+size: 1920x1080
+activity_figure: 图3-1
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-需求-退回意见页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-需求-退回意见页.html
+nav_from:
+  - 中心管理端首页 → 中试需求管理 → 退回意见页
+nav_to:
+  - 按钮「重新提交」→ 返回中试需求管理上一环节待办
+  - 状态同步 → Web/小程序待办列表更新
+components: [通知卡片, 步骤条, 签收按钮, 关联单号]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-需求-材料补充页
+page_title: 材料补充页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试需求管理
+activity_node: 需求材料补充
+tertiary_function: 需求材料补充
+platform: Web
+size: 1920x1080
+activity_figure: 图3-1
+png: 原型图/Web/02-企业门户/Web-企业-需求-材料补充页.png
+html: 原型图/Web/02-企业门户/Web-企业-需求-材料补充页.html
+nav_from:
+  - 企业门户首页 → 中试需求管理 → 材料补充页
+nav_to:
+  - 按钮「重新提交」→ 返回中试需求管理上一环节待办
+  - 状态同步 → Web/小程序待办列表更新
+components: [顶栏, 侧栏, 面包屑, 分组表单, 附件上传, 提交按钮, 校验提示]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-需求-材料补充页
+page_title: 材料补充页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试需求管理
+activity_node: 需求材料补充
+tertiary_function: 需求材料补充
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-1
+png: 原型图/小程序/企业端/小程序-企业-需求-材料补充页.png
+html: 原型图/小程序/企业端/小程序-企业-需求-材料补充页.html
+nav_from:
+  - 企业门户首页 → 中试需求管理 → 材料补充页
+nav_to:
+  - 按钮「重新提交」→ 返回中试需求管理上一环节待办
+  - 状态同步 → Web/小程序待办列表更新
+components: [顶栏, 侧栏, 面包屑, 分组表单, 附件上传, 提交按钮, 校验提示]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-需求-材料核验页
+page_title: 材料核验页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试需求管理
+activity_node: 受理材料核验
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-1
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-需求-材料核验页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-需求-材料核验页.html
+nav_from:
+  - 中心管理端首页 → 中试需求管理 → 材料核验页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试需求管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-需求-受理结果录入页
+page_title: 受理结果录入页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试需求管理
+activity_node: 受理结果通知
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-1
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-需求-受理结果录入页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-需求-受理结果录入页.html
+nav_from:
+  - 中心管理端首页 → 中试需求管理 → 受理结果录入页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [通知卡片, 步骤条, 签收按钮, 关联单号]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-需求-受理回执签收页
+page_title: 受理回执签收页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试需求管理
+activity_node: 受理回执签收
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-1
+png: 原型图/Web/02-企业门户/Web-企业-需求-受理回执签收页.png
+html: 原型图/Web/02-企业门户/Web-企业-需求-受理回执签收页.html
+nav_from:
+  - 企业门户首页 → 中试需求管理 → 受理回执签收页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试需求管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [通知卡片, 步骤条, 签收按钮, 关联单号]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-需求-受理回执签收页
+page_title: 受理回执签收页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试需求管理
+activity_node: 受理回执签收
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-1
+png: 原型图/小程序/企业端/小程序-企业-需求-受理回执签收页.png
+html: 原型图/小程序/企业端/小程序-企业-需求-受理回执签收页.html
+nav_from:
+  - 企业门户首页 → 中试需求管理 → 受理回执签收页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试需求管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [通知卡片, 步骤条, 签收按钮, 关联单号]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-需求-需求受理归档页
+page_title: 需求受理归档页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试需求管理
+activity_node: 受理信息归档
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-1
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-需求-需求受理归档页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-需求-需求受理归档页.html
+nav_from:
+  - 中心管理端首页 → 中试需求管理 → 需求受理归档页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试需求管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [归档清单, 确认归档, 只读详情, 状态标签]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-需求-受理进度详情页
+page_title: 受理进度详情页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试需求管理
+activity_node: 查看受理进度
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-1
+png: 原型图/Web/02-企业门户/Web-企业-需求-受理进度详情页.png
+html: 原型图/Web/02-企业门户/Web-企业-需求-受理进度详情页.html
+nav_from:
+  - 企业门户首页 → 中试需求管理 → 受理进度详情页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-需求-受理进度详情页
+page_title: 受理进度详情页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试需求管理
+activity_node: 查看受理进度
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-1
+png: 原型图/小程序/企业端/小程序-企业-需求-受理进度详情页.png
+html: 原型图/小程序/企业端/小程序-企业-需求-受理进度详情页.html
+nav_from:
+  - 企业门户首页 → 中试需求管理 → 受理进度详情页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-评估-评估前置核查页
+page_title: 评估前置核查页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试评估管理
+activity_node: 评估前置核查
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-评估-评估前置核查页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-评估-评估前置核查页.html
+nav_from:
+  - 中心管理端首页 → 中试评估管理 → 评估前置核查页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-评估-条件评估页
+page_title: 条件评估页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试评估管理
+activity_node: 中试条件评估
+tertiary_function: 中试条件评估
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-评估-条件评估页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-评估-条件评估页.html
+nav_from:
+  - 中心管理端首页 → 中试评估管理 → 条件评估页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-评估-条件整改通知页
+page_title: 条件整改通知页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试评估管理
+activity_node: 条件整改通知
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-评估-条件整改通知页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-评估-条件整改通知页.html
+nav_from:
+  - 中心管理端首页 → 中试评估管理 → 条件整改通知页
+nav_to:
+  - 按钮「重新提交」→ 返回中试评估管理上一环节待办
+  - 状态同步 → Web/小程序待办列表更新
+components: [通知卡片, 步骤条, 签收按钮, 关联单号]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-评估-条件材料补充页
+page_title: 条件材料补充页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试评估管理
+activity_node: 条件材料补充
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/02-企业门户/Web-企业-评估-条件材料补充页.png
+html: 原型图/Web/02-企业门户/Web-企业-评估-条件材料补充页.html
+nav_from:
+  - 企业门户首页 → 中试评估管理 → 条件材料补充页
+nav_to:
+  - 按钮「重新提交」→ 返回中试评估管理上一环节待办
+  - 状态同步 → Web/小程序待办列表更新
+components: [顶栏, 侧栏, 面包屑, 分组表单, 附件上传, 提交按钮, 校验提示]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-评估-条件材料补充页
+page_title: 条件材料补充页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试评估管理
+activity_node: 条件材料补充
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-2
+png: 原型图/小程序/企业端/小程序-企业-评估-条件材料补充页.png
+html: 原型图/小程序/企业端/小程序-企业-评估-条件材料补充页.html
+nav_from:
+  - 企业门户首页 → 中试评估管理 → 条件材料补充页
+nav_to:
+  - 按钮「重新提交」→ 返回中试评估管理上一环节待办
+  - 状态同步 → Web/小程序待办列表更新
+components: [顶栏, 侧栏, 面包屑, 分组表单, 附件上传, 提交按钮, 校验提示]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-评估-资源核定页
+page_title: 资源核定页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试评估管理
+activity_node: 资源需求核定
+tertiary_function: 资源需求核定
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-评估-资源核定页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-评估-资源核定页.html
+nav_from:
+  - 中心管理端首页 → 中试评估管理 → 资源核定页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-评估-可行性审查页
+page_title: 可行性审查页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试评估管理
+activity_node: 技术可行性审
+tertiary_function: 技术可行性审
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-评估-可行性审查页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-评估-可行性审查页.html
+nav_from:
+  - 中心管理端首页 → 中试评估管理 → 可行性审查页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试评估管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-评估-评估材料补充页
+page_title: 评估材料补充页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试评估管理
+activity_node: 评估材料补充
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/02-企业门户/Web-企业-评估-评估材料补充页.png
+html: 原型图/Web/02-企业门户/Web-企业-评估-评估材料补充页.html
+nav_from:
+  - 企业门户首页 → 中试评估管理 → 评估材料补充页
+nav_to:
+  - 按钮「重新提交」→ 返回中试评估管理上一环节待办
+  - 状态同步 → Web/小程序待办列表更新
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-评估-评估材料补充页
+page_title: 评估材料补充页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试评估管理
+activity_node: 评估材料补充
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-2
+png: 原型图/小程序/企业端/小程序-企业-评估-评估材料补充页.png
+html: 原型图/小程序/企业端/小程序-企业-评估-评估材料补充页.html
+nav_from:
+  - 企业门户首页 → 中试评估管理 → 评估材料补充页
+nav_to:
+  - 按钮「重新提交」→ 返回中试评估管理上一环节待办
+  - 状态同步 → Web/小程序待办列表更新
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-评估-评估结论页
+page_title: 评估结论页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试评估管理
+activity_node: 评估结论出具
+tertiary_function: 评估结论出具
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-评估-评估结论页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-评估-评估结论页.html
+nav_from:
+  - 中心管理端首页 → 中试评估管理 → 评估结论页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-评估-评估结论签收页
+page_title: 评估结论签收页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试评估管理
+activity_node: 评估结果签收
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/02-企业门户/Web-企业-评估-评估结论签收页.png
+html: 原型图/Web/02-企业门户/Web-企业-评估-评估结论签收页.html
+nav_from:
+  - 企业门户首页 → 中试评估管理 → 评估结论签收页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试评估管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [通知卡片, 步骤条, 签收按钮, 关联单号]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-评估-评估结论签收页
+page_title: 评估结论签收页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试评估管理
+activity_node: 评估结果签收
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-2
+png: 原型图/小程序/企业端/小程序-企业-评估-评估结论签收页.png
+html: 原型图/小程序/企业端/小程序-企业-评估-评估结论签收页.html
+nav_from:
+  - 企业门户首页 → 中试评估管理 → 评估结论签收页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试评估管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [通知卡片, 步骤条, 签收按钮, 关联单号]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-评估-评估意见反馈页
+page_title: 评估意见反馈页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试评估管理
+activity_node: 评估意见反馈
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/02-企业门户/Web-企业-评估-评估意见反馈页.png
+html: 原型图/Web/02-企业门户/Web-企业-评估-评估意见反馈页.html
+nav_from:
+  - 企业门户首页 → 中试评估管理 → 评估意见反馈页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-评估-评估意见反馈页
+page_title: 评估意见反馈页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试评估管理
+activity_node: 评估意见反馈
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-2
+png: 原型图/小程序/企业端/小程序-企业-评估-评估意见反馈页.png
+html: 原型图/小程序/企业端/小程序-企业-评估-评估意见反馈页.html
+nav_from:
+  - 企业门户首页 → 中试评估管理 → 评估意见反馈页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-评估-评估归档页
+page_title: 评估归档页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试评估管理
+activity_node: 评估信息归档
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-评估-评估归档页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-评估-评估归档页.html
+nav_from:
+  - 中心管理端首页 → 中试评估管理 → 评估归档页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试评估管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [归档清单, 确认归档, 只读详情, 状态标签]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-评估-评估结论详情页
+page_title: 评估结论详情页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试评估管理
+activity_node: 查看评估结论
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-2
+png: 原型图/Web/02-企业门户/Web-企业-评估-评估结论详情页.png
+html: 原型图/Web/02-企业门户/Web-企业-评估-评估结论详情页.html
+nav_from:
+  - 企业门户首页 → 中试评估管理 → 评估结论详情页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-评估-评估结论详情页
+page_title: 评估结论详情页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试评估管理
+activity_node: 查看评估结论
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-2
+png: 原型图/小程序/企业端/小程序-企业-评估-评估结论详情页.png
+html: 原型图/小程序/企业端/小程序-企业-评估-评估结论详情页.html
+nav_from:
+  - 企业门户首页 → 中试评估管理 → 评估结论详情页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-调度-资源匹配页
+page_title: 资源匹配页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试调度管理
+activity_node: 中试资源匹配
+tertiary_function: 中试资源匹配
+platform: Web
+size: 1920x1080
+activity_figure: 图3-3
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-资源匹配页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-资源匹配页.html
+nav_from:
+  - 中心管理端首页 → 中试调度管理 → 资源匹配页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试调度管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-调度-任务派发页
+page_title: 任务派发页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试调度管理
+activity_node: 中试任务派发
+tertiary_function: 中试任务派发
+platform: Web
+size: 1920x1080
+activity_figure: 图3-3
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-任务派发页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-任务派发页.html
+nav_from:
+  - 中心管理端首页 → 中试调度管理 → 任务派发页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试调度管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-调度-派单通知页
+page_title: 派单通知页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试调度管理
+activity_node: 派单结果通知
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-3
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-派单通知页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-派单通知页.html
+nav_from:
+  - 中心管理端首页 → 中试调度管理 → 派单通知页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [通知卡片, 步骤条, 签收按钮, 关联单号]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-技术-调度-任务接收页
+page_title: 任务接收页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试调度管理
+activity_node: 接收任务执行
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-3
+png: 原型图/Web/03-技术人员门户/Web-技术-调度-任务接收页.png
+html: 原型图/Web/03-技术人员门户/Web-技术-调度-任务接收页.html
+nav_from:
+  - 技术人员门户首页 → 中试调度管理 → 任务接收页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 面包屑, 筛选栏, 数据表格, 分页, 操作列]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-技术-调度-任务接收页
+page_title: 任务接收页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试调度管理
+activity_node: 接收任务执行
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-3
+png: 原型图/小程序/技术人员端/小程序-技术-调度-任务接收页.png
+html: 原型图/小程序/技术人员端/小程序-技术-调度-任务接收页.html
+nav_from:
+  - 技术人员门户首页 → 中试调度管理 → 任务接收页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 面包屑, 筛选栏, 数据表格, 分页, 操作列]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-技术-调度-任务确认签收页
+page_title: 任务确认签收页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试调度管理
+activity_node: 任务接收确认
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-3
+png: 原型图/Web/03-技术人员门户/Web-技术-调度-任务确认签收页.png
+html: 原型图/Web/03-技术人员门户/Web-技术-调度-任务确认签收页.html
+nav_from:
+  - 技术人员门户首页 → 中试调度管理 → 任务确认签收页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试调度管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [通知卡片, 步骤条, 签收按钮, 关联单号]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-技术-调度-任务确认签收页
+page_title: 任务确认签收页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试调度管理
+activity_node: 任务接收确认
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-3
+png: 原型图/小程序/技术人员端/小程序-技术-调度-任务确认签收页.png
+html: 原型图/小程序/技术人员端/小程序-技术-调度-任务确认签收页.html
+nav_from:
+  - 技术人员门户首页 → 中试调度管理 → 任务确认签收页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试调度管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [通知卡片, 步骤条, 签收按钮, 关联单号]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-技术-调度-进度填报页
+page_title: 进度填报页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试调度管理
+activity_node: 填报执行进度
+tertiary_function: 执行进度跟踪
+platform: Web
+size: 1920x1080
+activity_figure: 图3-3
+png: 原型图/Web/03-技术人员门户/Web-技术-调度-进度填报页.png
+html: 原型图/Web/03-技术人员门户/Web-技术-调度-进度填报页.html
+nav_from:
+  - 技术人员门户首页 → 中试调度管理 → 进度填报页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试调度管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-技术-调度-进度填报页
+page_title: 进度填报页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试调度管理
+activity_node: 填报执行进度
+tertiary_function: 执行进度跟踪
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-3
+png: 原型图/小程序/技术人员端/小程序-技术-调度-进度填报页.png
+html: 原型图/小程序/技术人员端/小程序-技术-调度-进度填报页.html
+nav_from:
+  - 技术人员门户首页 → 中试调度管理 → 进度填报页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试调度管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-调度-进度通报督办页
+page_title: 进度通报督办页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试调度管理
+activity_node: 执行进度通报
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-3
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-进度通报督办页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-进度通报督办页.html
+nav_from:
+  - 中心管理端首页 → 中试调度管理 → 进度通报督办页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-调度-异常重派页
+page_title: 异常重派页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试调度管理
+activity_node: 异常任务重派
+tertiary_function: 异常任务重派
+platform: Web
+size: 1920x1080
+activity_figure: 图3-3
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-异常重派页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-异常重派页.html
+nav_from:
+  - 中心管理端首页 → 中试调度管理 → 异常重派页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-调度-执行结果确认页
+page_title: 执行结果确认页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试调度管理
+activity_node: 执行结果确认
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-3
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-执行结果确认页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-执行结果确认页.html
+nav_from:
+  - 中心管理端首页 → 中试调度管理 → 执行结果确认页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试调度管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-调度-进度查看页
+page_title: 进度查看页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试调度管理
+activity_node: 查看执行进度
+tertiary_function: 执行进度跟踪
+platform: Web
+size: 1920x1080
+activity_figure: 图3-3
+png: 原型图/Web/02-企业门户/Web-企业-调度-进度查看页.png
+html: 原型图/Web/02-企业门户/Web-企业-调度-进度查看页.html
+nav_from:
+  - 企业门户首页 → 中试调度管理 → 进度查看页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-调度-进度查看页
+page_title: 进度查看页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试调度管理
+activity_node: 查看执行进度
+tertiary_function: 执行进度跟踪
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-3
+png: 原型图/小程序/企业端/小程序-企业-调度-进度查看页.png
+html: 原型图/小程序/企业端/小程序-企业-调度-进度查看页.html
+nav_from:
+  - 企业门户首页 → 中试调度管理 → 进度查看页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-调度-调度归档页
+page_title: 调度归档页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试调度管理
+activity_node: 调度信息归档
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-3
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-调度归档页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-调度-调度归档页.html
+nav_from:
+  - 中心管理端首页 → 中试调度管理 → 调度归档页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试调度管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [归档清单, 确认归档, 只读详情, 状态标签]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-技术-反馈-结果提交页
+page_title: 结果提交页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试反馈管理
+activity_node: 试验结果提交
+tertiary_function: 试验结果提交
+platform: Web
+size: 1920x1080
+activity_figure: 图3-4
+png: 原型图/Web/03-技术人员门户/Web-技术-反馈-结果提交页.png
+html: 原型图/Web/03-技术人员门户/Web-技术-反馈-结果提交页.html
+nav_from:
+  - 技术人员门户首页 → 中试反馈管理 → 结果提交页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试反馈管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 面包屑, 分组表单, 附件上传, 提交按钮, 校验提示]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-技术-反馈-结果提交页
+page_title: 结果提交页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试反馈管理
+activity_node: 试验结果提交
+tertiary_function: 试验结果提交
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-4
+png: 原型图/小程序/技术人员端/小程序-技术-反馈-结果提交页.png
+html: 原型图/小程序/技术人员端/小程序-技术-反馈-结果提交页.html
+nav_from:
+  - 技术人员门户首页 → 中试反馈管理 → 结果提交页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试反馈管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 面包屑, 分组表单, 附件上传, 提交按钮, 校验提示]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-技术-反馈-数据校验页
+page_title: 数据校验页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试反馈管理
+activity_node: 试验数据校验
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-4
+png: 原型图/Web/03-技术人员门户/Web-技术-反馈-数据校验页.png
+html: 原型图/Web/03-技术人员门户/Web-技术-反馈-数据校验页.html
+nav_from:
+  - 技术人员门户首页 → 中试反馈管理 → 数据校验页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-技术-反馈-数据校验页
+page_title: 数据校验页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试反馈管理
+activity_node: 试验数据校验
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-4
+png: 原型图/小程序/技术人员端/小程序-技术-反馈-数据校验页.png
+html: 原型图/小程序/技术人员端/小程序-技术-反馈-数据校验页.html
+nav_from:
+  - 技术人员门户首页 → 中试反馈管理 → 数据校验页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-反馈-报告审核页
+page_title: 报告审核页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试反馈管理
+activity_node: 中试报告审核
+tertiary_function: 中试报告审核
+platform: Web
+size: 1920x1080
+activity_figure: 图3-4
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-报告审核页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-报告审核页.html
+nav_from:
+  - 中心管理端首页 → 中试反馈管理 → 报告审核页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试反馈管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-技术-反馈-结果修改页
+page_title: 结果修改页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试反馈管理
+activity_node: 试验结果修改
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-4
+png: 原型图/Web/03-技术人员门户/Web-技术-反馈-结果修改页.png
+html: 原型图/Web/03-技术人员门户/Web-技术-反馈-结果修改页.html
+nav_from:
+  - 技术人员门户首页 → 中试反馈管理 → 结果修改页
+nav_to:
+  - 按钮「重新提交」→ 返回中试反馈管理上一环节待办
+  - 状态同步 → Web/小程序待办列表更新
+components: [顶栏, 侧栏, 面包屑, 分组表单, 附件上传, 提交按钮, 校验提示]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-技术-反馈-结果修改页
+page_title: 结果修改页
+portal: 技术人员门户
+role: 中试技术人员
+module_full: 中试反馈管理
+activity_node: 试验结果修改
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-4
+png: 原型图/小程序/技术人员端/小程序-技术-反馈-结果修改页.png
+html: 原型图/小程序/技术人员端/小程序-技术-反馈-结果修改页.html
+nav_from:
+  - 技术人员门户首页 → 中试反馈管理 → 结果修改页
+nav_to:
+  - 按钮「重新提交」→ 返回中试反馈管理上一环节待办
+  - 状态同步 → Web/小程序待办列表更新
+components: [顶栏, 侧栏, 面包屑, 分组表单, 附件上传, 提交按钮, 校验提示]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-反馈-复核确认页
+page_title: 复核确认页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试反馈管理
+activity_node: 结果复核确认
+tertiary_function: 结果复核确认
+platform: Web
+size: 1920x1080
+activity_figure: 图3-4
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-复核确认页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-复核确认页.html
+nav_from:
+  - 中心管理端首页 → 中试反馈管理 → 复核确认页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试反馈管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-反馈-报告归档页
+page_title: 报告归档页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试反馈管理
+activity_node: 中试报告归档
+tertiary_function: 中试报告归档
+platform: Web
+size: 1920x1080
+activity_figure: 图3-4
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-报告归档页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-报告归档页.html
+nav_from:
+  - 中心管理端首页 → 中试反馈管理 → 报告归档页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试反馈管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [归档清单, 确认归档, 只读详情, 状态标签]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-反馈-复核结果通知页
+page_title: 复核结果通知页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试反馈管理
+activity_node: 复核结果通知
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-4
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-复核结果通知页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-复核结果通知页.html
+nav_from:
+  - 中心管理端首页 → 中试反馈管理 → 复核结果通知页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [通知卡片, 步骤条, 签收按钮, 关联单号]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-反馈-复核意见反馈页
+page_title: 复核意见反馈页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试反馈管理
+activity_node: 复核意见反馈
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-4
+png: 原型图/Web/02-企业门户/Web-企业-反馈-复核意见反馈页.png
+html: 原型图/Web/02-企业门户/Web-企业-反馈-复核意见反馈页.html
+nav_from:
+  - 企业门户首页 → 中试反馈管理 → 复核意见反馈页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-反馈-复核意见反馈页
+page_title: 复核意见反馈页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试反馈管理
+activity_node: 复核意见反馈
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-4
+png: 原型图/小程序/企业端/小程序-企业-反馈-复核意见反馈页.png
+html: 原型图/小程序/企业端/小程序-企业-反馈-复核意见反馈页.html
+nav_from:
+  - 企业门户首页 → 中试反馈管理 → 复核意见反馈页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-反馈-反馈审核页
+page_title: 反馈审核页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试反馈管理
+activity_node: 反馈结果审核
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-4
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-反馈审核页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-反馈审核页.html
+nav_from:
+  - 中心管理端首页 → 中试反馈管理 → 反馈审核页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试反馈管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-反馈-复核结果详情页
+page_title: 复核结果详情页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试反馈管理
+activity_node: 查看复核结果
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-4
+png: 原型图/Web/02-企业门户/Web-企业-反馈-复核结果详情页.png
+html: 原型图/Web/02-企业门户/Web-企业-反馈-复核结果详情页.html
+nav_from:
+  - 企业门户首页 → 中试反馈管理 → 复核结果详情页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-反馈-复核结果详情页
+page_title: 复核结果详情页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试反馈管理
+activity_node: 查看复核结果
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-4
+png: 原型图/小程序/企业端/小程序-企业-反馈-复核结果详情页.png
+html: 原型图/小程序/企业端/小程序-企业-反馈-复核结果详情页.html
+nav_from:
+  - 企业门户首页 → 中试反馈管理 → 复核结果详情页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-反馈-报告结案归档页
+page_title: 报告结案归档页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试反馈管理
+activity_node: 报告信息归档
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-4
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-报告结案归档页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-反馈-报告结案归档页.html
+nav_from:
+  - 中心管理端首页 → 中试反馈管理 → 报告结案归档页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试反馈管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [归档清单, 确认归档, 只读详情, 状态标签]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-档案-台账维护页
+page_title: 台账维护页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试档案管理
+activity_node: 项目台账维护
+tertiary_function: 项目台账维护
+platform: Web
+size: 1920x1080
+activity_figure: 图3-5
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-档案-台账维护页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-档案-台账维护页.html
+nav_from:
+  - 中心管理端首页 → 中试档案管理 → 台账维护页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [归档清单, 确认归档, 只读详情, 状态标签]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-档案-档案确认页
+page_title: 档案确认页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试档案管理
+activity_node: 档案信息确认
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-5
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-档案-档案确认页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-档案-档案确认页.html
+nav_from:
+  - 中心管理端首页 → 中试档案管理 → 档案确认页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试档案管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [归档清单, 确认归档, 只读详情, 状态标签]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-档案-结案资料归集页
+page_title: 结案资料归集页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试档案管理
+activity_node: 结案资料归集
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-5
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-档案-结案资料归集页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-档案-结案资料归集页.html
+nav_from:
+  - 中心管理端首页 → 中试档案管理 → 结案资料归集页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [归档清单, 确认归档, 只读详情, 状态标签]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-档案-周期统计页
+page_title: 周期统计页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试档案管理
+activity_node: 中试周期统计
+tertiary_function: 中试周期统计
+platform: Web
+size: 1920x1080
+activity_figure: 图3-5
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-档案-周期统计页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-档案-周期统计页.html
+nav_from:
+  - 中心管理端首页 → 中试档案管理 → 周期统计页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [统计卡片, 筛选条件, 图表区, 导出按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-档案-成功率分析页
+page_title: 成功率分析页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试档案管理
+activity_node: 成功率分析
+tertiary_function: 成功率分析
+platform: Web
+size: 1920x1080
+activity_figure: 图3-5
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-档案-成功率分析页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-档案-成功率分析页.html
+nav_from:
+  - 中心管理端首页 → 中试档案管理 → 成功率分析页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [统计卡片, 筛选条件, 图表区, 导出按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-调度-档案-简报生成页
+page_title: 简报生成页
+portal: 中心管理端
+role: 中试调度员
+module_full: 中试档案管理
+activity_node: 服务简报生成
+tertiary_function: 服务简报生成
+platform: Web
+size: 1920x1080
+activity_figure: 图3-5
+png: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-档案-简报生成页.png
+html: 原型图/Web/01-中心管理端/调度员/Web-中心-调度-档案-简报生成页.html
+nav_from:
+  - 中心管理端首页 → 中试档案管理 → 简报生成页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [统计卡片, 筛选条件, 图表区, 导出按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-档案-简报审核页
+page_title: 简报审核页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试档案管理
+activity_node: 简报内容审核
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-5
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-档案-简报审核页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-档案-简报审核页.html
+nav_from:
+  - 中心管理端首页 → 中试档案管理 → 简报审核页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试档案管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [顶栏, 侧栏, 只读详情, 审核意见, 通过按钮, 退回按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-企业-档案-简报查看页
+page_title: 简报查看页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试档案管理
+activity_node: 查看服务简报
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-5
+png: 原型图/Web/02-企业门户/Web-企业-档案-简报查看页.png
+html: 原型图/Web/02-企业门户/Web-企业-档案-简报查看页.html
+nav_from:
+  - 企业门户首页 → 中试档案管理 → 简报查看页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: 小程序-企业-档案-简报查看页
+page_title: 简报查看页
+portal: 企业门户
+role: 企业项目负责人
+module_full: 中试档案管理
+activity_node: 查看服务简报
+tertiary_function: —
+platform: 小程序
+size: 375x812（PNG按2倍清晰度导出）
+activity_figure: 图3-5
+png: 原型图/小程序/企业端/小程序-企业-档案-简报查看页.png
+html: 原型图/小程序/企业端/小程序-企业-档案-简报查看页.html
+nav_from:
+  - 企业门户首页 → 中试档案管理 → 简报查看页
+nav_to:
+  - 按钮「查看详情」→ 项目详情/进度页
+components: [步骤条, 办理时间线, 状态同步说明, 详情按钮]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]
+---
+page_id: Web-中心-审核-档案-档案归档页
+page_title: 档案归档页
+portal: 中心管理端
+role: 中试审核员
+module_full: 中试档案管理
+activity_node: 档案信息归档
+tertiary_function: —
+platform: Web
+size: 1920x1080
+activity_figure: 图3-5
+png: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-档案-档案归档页.png
+html: 原型图/Web/01-中心管理端/审核员/Web-中心-审核-档案-档案归档页.html
+nav_from:
+  - 中心管理端首页 → 中试档案管理 → 档案归档页
+nav_to:
+  - 按钮「提交/通过/确认」→ 中试档案管理下一活动节点
+  - 按钮「退回」→ 对应补充或修改页（↺）
+components: [归档清单, 确认归档, 只读详情, 状态标签]
+status_tags: [草稿, 待处理, 办理中, 已退回, 已完成, 已归档]

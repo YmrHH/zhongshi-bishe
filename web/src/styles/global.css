@@ -1,0 +1,44 @@
+:root {
+  --primary: #1890ff;
+  --sidebar-bg: #263445;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
+  background: #eef3f8;
+  color: #303133;
+}
+
+.page-card {
+  background: #fff;
+  border: 1px solid #dcdfe6;
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 18px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.stat-item {
+  background: #fff;
+  border: 1px solid #dcdfe6;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.stat-item b {
+  display: block;
+  font-size: 30px;
+  color: var(--primary);
+  margin-top: 8px;
+}

@@ -17,6 +17,7 @@ export interface DashboardData {
   stats: Record<string, number>
   todos: Array<{
     projectId?: number
+    taskId?: number
     projectNo: string
     title: string
     module: string

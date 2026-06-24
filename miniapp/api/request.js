@@ -89,3 +89,23 @@ export function fetchDemandProgress(projectId) {
 export function fetchDemandTodos() {
   return request('/demand/todos', 'GET')
 }
+
+export function fetchDispatchDetail(projectId) {
+  return request(`/projects/${projectId}/dispatch/progress`, 'GET')
+}
+
+export function receiveTask(taskId) {
+  return request(`/tasks/${taskId}/receive`, 'POST')
+}
+
+export function confirmTask(taskId) {
+  return request(`/tasks/${taskId}/confirm`, 'POST')
+}
+
+export function reportTaskProgress(taskId, data) {
+  return request(`/tasks/${taskId}/progress`, 'POST', data)
+}
+
+export function acknowledgeDispatchProgress(projectId, data) {
+  return request(`/projects/${projectId}/dispatch/acknowledge`, 'POST', data || {})
+}

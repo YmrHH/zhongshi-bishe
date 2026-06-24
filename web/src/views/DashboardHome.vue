@@ -23,9 +23,10 @@ const statLabels: Record<string, string> = {
 
 function handleTodo(row: DashboardData['todos'][number]) {
   if (row.route) {
-    const path = row.route
-    const query = row.projectId ? { projectId: row.projectId } : undefined
-    router.push({ path, query })
+    const query: Record<string, number> = {}
+    if (row.projectId) query.projectId = row.projectId
+    if (row.taskId) query.taskId = row.taskId
+    router.push({ path: row.route, query: Object.keys(query).length ? query : undefined })
     return
   }
   if (userStore.profile?.role === 'ENTERPRISE') {

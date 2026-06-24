@@ -12,6 +12,7 @@ public final class ProjectStatusHelper {
         return switch (stage) {
             case DEMAND -> DemandStatus.of(project.getStatus()).label();
             case EVALUATION -> EvaluationStatus.of(project.getStatus()).label();
+            case DISPATCH -> DispatchStatus.of(project.getStatus()).label();
             default -> project.getCurrentNode() != null ? project.getCurrentNode() : stage.label();
         };
     }

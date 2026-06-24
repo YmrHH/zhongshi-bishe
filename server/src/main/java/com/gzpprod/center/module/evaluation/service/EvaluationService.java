@@ -2,8 +2,10 @@ package com.gzpprod.center.module.evaluation.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.gzpprod.center.common.BusinessException;
+import com.gzpprod.center.common.DispatchStatus;
 import com.gzpprod.center.common.EvaluationStatus;
 import com.gzpprod.center.common.ProjectStage;
+import com.gzpprod.center.common.ProjectStatusHelper;
 import com.gzpprod.center.common.SecurityUtils;
 import com.gzpprod.center.common.UserRole;
 import com.gzpprod.center.module.auth.entity.SysUser;
@@ -20,6 +22,7 @@ import com.gzpprod.center.module.evaluation.entity.EvaluationMaterial;
 import com.gzpprod.center.module.evaluation.mapper.EvaluationMapper;
 import com.gzpprod.center.module.evaluation.mapper.EvaluationMaterialMapper;
 import com.gzpprod.center.module.notification.service.NotificationService;
+import com.gzpprod.center.module.dispatch.service.DispatchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,6 +46,7 @@ public class EvaluationService {
     private final WorkflowLogMapper workflowLogMapper;
     private final SysUserMapper userMapper;
     private final NotificationService notificationService;
+    private final DispatchService dispatchService;
 
     @Transactional
     public void initForProject(Long projectId) {
@@ -217,7 +221,10 @@ public class EvaluationService {
         }
         transition(project, EvaluationStatus.ARCHIVED, "评估信息归档", user.getId(), "评估段归档完成");
         project.setStage(ProjectStage.DISPATCH.name());
+        project.setStatus(DispatchStatus.MATCH.name());
+        project.setCurrentNode("中试资源匹配");
         projectMapper.updateById(project);
+        dispatchService.seedResourcesIfEmpty();
         return getDetail(user, projectId);
     }
 
@@ -241,7 +248,7 @@ public class EvaluationService {
                 .title(project.getTitle())
                 .stage(project.getStage())
                 .status(project.getStatus())
-                .statusLabel(status.label())
+                .statusLabel(ProjectStatusHelper.label(project))
                 .currentNode(project.getCurrentNode())
                 .enterpriseName(enterprise != null ? enterprise.getOrgName() : null)
                 .precheckRemark(evaluation.getPrecheckRemark())

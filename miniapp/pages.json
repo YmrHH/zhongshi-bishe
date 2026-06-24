@@ -51,6 +51,22 @@
     {
       "path": "pages/enterprise/evaluation/conclusion-detail",
       "style": { "navigationBarTitleText": "评估结论详情" }
+    },
+    {
+      "path": "pages/enterprise/dispatch/progress-view",
+      "style": { "navigationBarTitleText": "执行进度查看" }
+    },
+    {
+      "path": "pages/technician/dispatch/receive",
+      "style": { "navigationBarTitleText": "接收任务" }
+    },
+    {
+      "path": "pages/technician/dispatch/confirm",
+      "style": { "navigationBarTitleText": "任务签收" }
+    },
+    {
+      "path": "pages/technician/dispatch/progress-report",
+      "style": { "navigationBarTitleText": "进度填报" }
     }
   ],
   "globalStyle": {

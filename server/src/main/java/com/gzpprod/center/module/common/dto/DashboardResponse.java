@@ -17,6 +17,7 @@ public class DashboardResponse {
     @Builder
     public static class TodoItem {
         private Long projectId;
+        private Long taskId;
         private String projectNo;
         private String title;
         private String module;

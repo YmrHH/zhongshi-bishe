@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/stores/user'
 import { MODULES } from '@/router'
 
@@ -17,7 +18,16 @@ function goHome() {
   router.push(`/${portalPrefix.value}/home`)
 }
 
+function menuEnabled(mod: typeof MODULES[number]) {
+  const role = userStore.profile?.role
+  if (mod.path === 'dispatch') {
+    return role === 'DISPATCHER' || role === 'ENTERPRISE' || role === 'TECHNICIAN'
+  }
+  return mod.path === 'demand' || mod.path === 'evaluation'
+}
+
 function goModule(mod: typeof MODULES[number]) {
+  if (!menuEnabled(mod)) return
   const role = userStore.profile?.role
   if (mod.path === 'demand') {
     if (role === 'ENTERPRISE') router.push('/enterprise/demand/preview')
@@ -29,6 +39,15 @@ function goModule(mod: typeof MODULES[number]) {
     if (role === 'ENTERPRISE') router.push('/enterprise/evaluation/conclusion-detail')
     else if (role === 'DISPATCHER') router.push('/center/dispatch/evaluation/precheck')
     else if (role === 'AUDITOR') router.push('/center/audit/evaluation/feasibility')
+    return
+  }
+  if (mod.path === 'dispatch') {
+    if (role === 'ENTERPRISE') router.push('/enterprise/dispatch/progress-view')
+    else if (role === 'DISPATCHER') router.push('/center/dispatch/dispatch/match')
+    else if (role === 'TECHNICIAN') router.push('/technician/dispatch/receive')
+    else if (role === 'AUDITOR') {
+      ElMessage.warning('中试调度管理仅中试调度员可操作，审核员请使用「中试评估管理」')
+    }
   }
 }
 
@@ -48,7 +67,7 @@ function logout() {
         <div
           v-for="m in MODULES"
           :key="m.path"
-          :class="['item', activeMenu === m.path ? 'on' : '', (m.path === 'demand' || m.path === 'evaluation') ? '' : 'disabled']"
+          :class="['item', activeMenu === m.path ? 'on' : '', menuEnabled(m) ? '' : 'disabled']"
           @click="goModule(m)"
         >
           {{ m.title }}

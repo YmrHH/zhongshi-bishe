@@ -89,6 +89,41 @@ const router = createRouter({
           path: 'audit/evaluation/conclusion',
           component: () => import('@/views/center/audit/evaluation/ConclusionView.vue'),
           meta: { title: '评估结论页', module: 'evaluation', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'dispatch/dispatch/match',
+          component: () => import('@/views/center/dispatch/dispatch/MatchView.vue'),
+          meta: { title: '中试资源匹配页', module: 'dispatch', roles: ['DISPATCHER'] }
+        },
+        {
+          path: 'dispatch/dispatch/assign',
+          component: () => import('@/views/center/dispatch/dispatch/AssignView.vue'),
+          meta: { title: '中试任务派发页', module: 'dispatch', roles: ['DISPATCHER'] }
+        },
+        {
+          path: 'dispatch/dispatch/assign-notice',
+          component: () => import('@/views/center/dispatch/dispatch/AssignNoticeView.vue'),
+          meta: { title: '派单结果通知页', module: 'dispatch', roles: ['DISPATCHER'] }
+        },
+        {
+          path: 'dispatch/dispatch/supervise',
+          component: () => import('@/views/center/dispatch/dispatch/SuperviseView.vue'),
+          meta: { title: '进度通报督办页', module: 'dispatch', roles: ['DISPATCHER'] }
+        },
+        {
+          path: 'dispatch/dispatch/reassign',
+          component: () => import('@/views/center/dispatch/dispatch/ReassignView.vue'),
+          meta: { title: '异常任务重派页', module: 'dispatch', roles: ['DISPATCHER'] }
+        },
+        {
+          path: 'dispatch/dispatch/exec-confirm',
+          component: () => import('@/views/center/dispatch/dispatch/ExecConfirmView.vue'),
+          meta: { title: '执行结果确认页', module: 'dispatch', roles: ['DISPATCHER'] }
+        },
+        {
+          path: 'dispatch/dispatch/archive',
+          component: () => import('@/views/center/dispatch/dispatch/ArchiveView.vue'),
+          meta: { title: '调度信息归档页', module: 'dispatch', roles: ['DISPATCHER'] }
         }
       ]
     },
@@ -152,6 +187,11 @@ const router = createRouter({
           path: 'evaluation/conclusion-detail',
           component: () => import('@/views/enterprise/evaluation/ConclusionDetailView.vue'),
           meta: { title: '评估结论详情页', module: 'evaluation' }
+        },
+        {
+          path: 'dispatch/progress-view',
+          component: () => import('@/views/enterprise/dispatch/ProgressViewView.vue'),
+          meta: { title: '执行进度查看页', module: 'dispatch' }
         }
       ]
     },
@@ -164,7 +204,22 @@ const router = createRouter({
           path: 'home',
           name: 'TechnicianHome',
           component: () => import('@/views/technician/HomeView.vue'),
-          meta: { title: '技术人员首页' }
+          meta: { title: '技术人员首页', module: 'home' }
+        },
+        {
+          path: 'dispatch/receive',
+          component: () => import('@/views/technician/dispatch/ReceiveView.vue'),
+          meta: { title: '接收任务执行页', module: 'dispatch' }
+        },
+        {
+          path: 'dispatch/confirm',
+          component: () => import('@/views/technician/dispatch/ConfirmView.vue'),
+          meta: { title: '任务接收确认页', module: 'dispatch' }
+        },
+        {
+          path: 'dispatch/progress-report',
+          component: () => import('@/views/technician/dispatch/ProgressReportView.vue'),
+          meta: { title: '填报执行进度页', module: 'dispatch' }
         }
       ]
     }
@@ -191,8 +246,10 @@ router.beforeEach(async (to, _from, next) => {
       return
     }
   }
-  const parentRoles = to.matched.find((r) => r.meta.roles && !to.meta.roles)?.meta.roles as string[] | undefined
-  const routeRoles = to.meta.roles as string[] | undefined
+  const leaf = to.matched[to.matched.length - 1]
+  const routeRoles = (leaf.meta.roles as string[] | undefined)
+    || (to.meta.roles as string[] | undefined)
+  const parentRoles = to.matched.find((r) => r.meta.roles)?.meta.roles as string[] | undefined
   const roles = routeRoles || parentRoles
   if (roles && store.profile && !roles.includes(store.profile.role)) {
     next(store.profile.homePath)

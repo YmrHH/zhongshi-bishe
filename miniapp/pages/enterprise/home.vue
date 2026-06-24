@@ -67,7 +67,8 @@ function openTodo(item) {
     '/enterprise/evaluation/eval-supplement': '/pages/enterprise/evaluation/eval-supplement',
     '/enterprise/evaluation/conclusion-receipt': '/pages/enterprise/evaluation/conclusion-receipt',
     '/enterprise/evaluation/feedback': '/pages/enterprise/evaluation/feedback',
-    '/enterprise/evaluation/conclusion-detail': '/pages/enterprise/evaluation/conclusion-detail'
+    '/enterprise/evaluation/conclusion-detail': '/pages/enterprise/evaluation/conclusion-detail',
+    '/enterprise/dispatch/progress-view': '/pages/enterprise/dispatch/progress-view'
   }
   const path = map[item.route] || '/pages/enterprise/demand/progress'
   uni.navigateTo({ url: `${path}?projectId=${item.projectId}` })

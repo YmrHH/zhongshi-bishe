@@ -23,7 +23,7 @@ async function submit() {
   try {
     await archiveEvaluation(Number(route.query.projectId))
     ElMessage.success('评估段已归档，进入调度阶段')
-    router.push('/center/home')
+    router.push({ path: '/center/dispatch/dispatch/match', query: { projectId: route.query.projectId } })
   } catch (e) {
     ElMessage.error(e instanceof Error ? e.message : '操作失败')
   } finally {
@@ -39,6 +39,11 @@ async function submit() {
     <div v-if="detail" class="page-card">
       <StatusTag :label="detail.statusLabel" :status="detail.status" />
       <ProjectStepBar :steps="detail.steps" />
+      <el-descriptions v-if="detail" :column="2" border size="small" style="margin-top:16px">
+        <el-descriptions-item label="评估结论">{{ detail.conclusion || '—' }}</el-descriptions-item>
+        <el-descriptions-item label="资源需求">{{ detail.resourceRequirement || '—' }}</el-descriptions-item>
+        <el-descriptions-item label="结论意见" :span="2">{{ detail.conclusionOpinion || '—' }}</el-descriptions-item>
+      </el-descriptions>
       <el-button type="primary" style="margin-top:16px" @click="submit">确认归档</el-button>
     </div>
   </div>

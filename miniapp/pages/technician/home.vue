@@ -13,14 +13,13 @@
     <view class="section">
       <text class="section-title">快捷入口</text>
       <view class="actions">
-        <view class="action">接收任务</view>
-        <view class="action">进度填报</view>
-        <view class="action">结果提交</view>
+        <view class="action" @click="go('/pages/technician/dispatch/receive')">接收任务</view>
+        <view class="action" @click="go('/pages/technician/dispatch/progress-report')">进度填报</view>
       </view>
     </view>
     <view class="section">
       <text class="section-title">我的任务</text>
-      <view v-for="item in dashboard?.todos || []" :key="item.projectNo" class="todo">
+      <view v-for="item in dashboard?.todos || []" :key="item.projectNo" class="todo" @click="openTodo(item)">
         <text class="todo-title">{{ item.title }}</text>
         <text class="todo-meta">{{ item.projectNo }} · {{ item.status }}</text>
       </view>
@@ -43,6 +42,25 @@ onMounted(async () => {
   }
   dashboard.value = await fetchDashboard()
 })
+
+function go(url) {
+  uni.navigateTo({ url })
+}
+
+function openTodo(item) {
+  if (!item.route) return
+  const map = {
+    '/technician/dispatch/receive': '/pages/technician/dispatch/receive',
+    '/technician/dispatch/confirm': '/pages/technician/dispatch/confirm',
+    '/technician/dispatch/progress-report': '/pages/technician/dispatch/progress-report'
+  }
+  const url = map[item.route]
+  if (!url) return
+  const q = []
+  if (item.projectId) q.push(`projectId=${item.projectId}`)
+  if (item.taskId) q.push(`taskId=${item.taskId}`)
+  uni.navigateTo({ url: q.length ? `${url}?${q.join('&')}` : url })
+}
 </script>
 
 <style scoped>

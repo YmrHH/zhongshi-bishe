@@ -8,6 +8,7 @@ import lombok.Data;
 public class DemandTodoItem {
 
     private Long projectId;
+    private Long taskId;
     private String projectNo;
     private String title;
     private String status;

@@ -8,6 +8,7 @@ import com.gzpprod.center.module.common.dto.DashboardResponse;
 import com.gzpprod.center.module.demand.dto.DemandTodoItem;
 import com.gzpprod.center.module.demand.service.DemandService;
 import com.gzpprod.center.module.evaluation.service.EvaluationService;
+import com.gzpprod.center.module.dispatch.service.DispatchService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,7 @@ public class CommonController {
 
     private final DemandService demandService;
     private final EvaluationService evaluationService;
+    private final DispatchService dispatchService;
     private final SysUserMapper userMapper;
 
     @Operation(summary = "工作台首页统计")
@@ -38,6 +40,7 @@ public class CommonController {
         List<DemandTodoItem> allTodos = new ArrayList<>();
         allTodos.addAll(demandService.listTodos(user));
         allTodos.addAll(evaluationService.listTodos(user));
+        allTodos.addAll(dispatchService.listTodos(user));
 
         Map<String, Integer> stats = new LinkedHashMap<>();
         stats.put("pending", (int) allTodos.stream()
@@ -57,10 +60,10 @@ public class CommonController {
         List<DashboardResponse.TodoItem> todos = allTodos.stream()
                 .map(t -> DashboardResponse.TodoItem.builder()
                         .projectId(t.getProjectId())
+                        .taskId(t.getTaskId())
                         .projectNo(t.getProjectNo())
                         .title(t.getTitle())
-                        .module(t.getRoute() != null && t.getRoute().contains("/evaluation/")
-                                ? "中试评估管理" : moduleLabel(UserRole.valueOf(user.getRole())))
+                        .module(resolveModule(t))
                         .status(t.getStatusLabel())
                         .time(t.getUpdatedAt())
                         .route(t.getRoute())
@@ -68,6 +71,19 @@ public class CommonController {
                 .toList();
 
         return Result.ok(DashboardResponse.builder().stats(stats).todos(todos).build());
+    }
+
+    private String resolveModule(DemandTodoItem t) {
+        if (t.getRoute() == null) {
+            return "中试需求管理";
+        }
+        if (t.getRoute().contains("/evaluation/")) {
+            return "中试评估管理";
+        }
+        if (t.getRoute().contains("/dispatch/")) {
+            return "中试调度管理";
+        }
+        return "中试需求管理";
     }
 
     private String moduleLabel(UserRole role) {

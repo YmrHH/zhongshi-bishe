@@ -13,6 +13,7 @@ import com.gzpprod.center.module.evaluation.mapper.EvaluationMapper;
 import com.gzpprod.center.module.evaluation.mapper.EvaluationMaterialMapper;
 import com.gzpprod.center.module.auth.mapper.SysUserMapper;
 import com.gzpprod.center.module.notification.service.NotificationService;
+import com.gzpprod.center.module.dispatch.service.DispatchService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,6 +36,7 @@ class EvaluationServiceTest {
     @Mock private WorkflowLogMapper workflowLogMapper;
     @Mock private SysUserMapper userMapper;
     @Mock private NotificationService notificationService;
+    @Mock private DispatchService dispatchService;
     @InjectMocks private EvaluationService evaluationService;
 
     private SysUser dispatcher;

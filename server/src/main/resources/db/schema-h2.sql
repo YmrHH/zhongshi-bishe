@@ -96,3 +96,32 @@ CREATE TABLE IF NOT EXISTS evaluation_material (
     version        INT          NOT NULL DEFAULT 1,
     created_at     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS resource (
+    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name        VARCHAR(128) NOT NULL,
+    type        VARCHAR(64),
+    capacity    VARCHAR(64),
+    status      VARCHAR(32)  NOT NULL DEFAULT 'AVAILABLE',
+    created_at  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS dispatch_task (
+    id             BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id     BIGINT       NOT NULL,
+    resource_id    BIGINT,
+    technician_id  BIGINT,
+    status         VARCHAR(32)  NOT NULL DEFAULT 'PENDING',
+    progress_pct   INT          NOT NULL DEFAULT 0,
+    remark         VARCHAR(512),
+    created_at     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    updated_at     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS task_progress (
+    id           BIGINT AUTO_INCREMENT PRIMARY KEY,
+    task_id      BIGINT       NOT NULL,
+    progress_pct INT          NOT NULL DEFAULT 0,
+    content      VARCHAR(512),
+    report_time  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+);

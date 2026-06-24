@@ -22,13 +22,24 @@ public final class SecurityUtils {
         return user;
     }
 
+    public static UserRole currentRole(SysUser user) {
+        if (user == null || user.getRole() == null || user.getRole().isBlank()) {
+            throw new BusinessException(401, "用户角色无效，请重新登录");
+        }
+        return UserRole.valueOf(user.getRole().trim());
+    }
+
     public static UserRole requireRole(SysUser user, UserRole... allowed) {
-        UserRole role = UserRole.valueOf(user.getRole());
+        UserRole role = currentRole(user);
         for (UserRole r : allowed) {
             if (r == role) {
                 return role;
             }
         }
-        throw new BusinessException(403, "无权操作");
+        String required = java.util.Arrays.stream(allowed)
+                .map(UserRole::label)
+                .reduce((a, b) -> a + "、" + b)
+                .orElse("");
+        throw new BusinessException(403, "无权操作（需要" + required + "，当前为" + role.label() + "）");
     }
 }

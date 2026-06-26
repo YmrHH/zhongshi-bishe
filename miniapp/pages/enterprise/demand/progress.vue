@@ -21,7 +21,8 @@
 </template>
 
 <script setup>
-import { ref, onLoad } from '@dcloudio/uni-app'
+import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import { fetchDemandProgress } from '../../../api/request.js'
 
 const detail = ref(null)

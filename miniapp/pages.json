@@ -6,11 +6,17 @@
     },
     {
       "path": "pages/enterprise/home",
-      "style": { "navigationBarTitleText": "企业首页" }
+      "style": {
+        "navigationBarTitleText": "企业首页",
+        "enablePullDownRefresh": true
+      }
     },
     {
       "path": "pages/technician/home",
-      "style": { "navigationBarTitleText": "技术人员首页" }
+      "style": {
+        "navigationBarTitleText": "技术人员首页",
+        "enablePullDownRefresh": true
+      }
     },
     {
       "path": "pages/enterprise/demand/preview",
@@ -67,6 +73,30 @@
     {
       "path": "pages/technician/dispatch/progress-report",
       "style": { "navigationBarTitleText": "进度填报" }
+    },
+    {
+      "path": "pages/technician/feedback/submit",
+      "style": { "navigationBarTitleText": "结果提交" }
+    },
+    {
+      "path": "pages/technician/feedback/validate",
+      "style": { "navigationBarTitleText": "数据校验" }
+    },
+    {
+      "path": "pages/technician/feedback/modify",
+      "style": { "navigationBarTitleText": "结果修改" }
+    },
+    {
+      "path": "pages/enterprise/feedback/review-feedback",
+      "style": { "navigationBarTitleText": "复核意见反馈" }
+    },
+    {
+      "path": "pages/enterprise/feedback/review-detail",
+      "style": { "navigationBarTitleText": "复核结果详情" }
+    },
+    {
+      "path": "pages/enterprise/archive/brief-view",
+      "style": { "navigationBarTitleText": "服务简报" }
     }
   ],
   "globalStyle": {

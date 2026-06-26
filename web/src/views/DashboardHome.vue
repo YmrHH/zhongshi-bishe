@@ -1,17 +1,30 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { onMounted, onUnmounted, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { fetchDashboard } from '@/api/auth'
 import type { DashboardData } from '@/types/api'
 import { useUserStore } from '@/stores/user'
 
+const route = useRoute()
 const router = useRouter()
 const userStore = useUserStore()
 const dashboard = ref<DashboardData | null>(null)
+let pollTimer: ReturnType<typeof setInterval> | undefined
 
-onMounted(async () => {
+async function loadDashboard() {
   const res = await fetchDashboard()
   dashboard.value = res.data.data
+}
+
+onMounted(async () => {
+  await loadDashboard()
+  if (route.meta.module === 'home') {
+    pollTimer = setInterval(loadDashboard, 30000)
+  }
+})
+
+onUnmounted(() => {
+  if (pollTimer) clearInterval(pollTimer)
 })
 
 const statLabels: Record<string, string> = {

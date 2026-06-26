@@ -133,3 +133,54 @@ CREATE TABLE IF NOT EXISTS task_progress (
     report_time  DATETIME     DEFAULT CURRENT_TIMESTAMP,
     KEY idx_progress_task (task_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='任务进度';
+
+CREATE TABLE IF NOT EXISTS feedback_report (
+    id              BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id      BIGINT       NOT NULL,
+    task_id         BIGINT,
+    content         TEXT,
+    file_url        VARCHAR(512),
+    file_name       VARCHAR(256),
+    validate_remark VARCHAR(512),
+    modify_remark   VARCHAR(512),
+    created_at      DATETIME     DEFAULT CURRENT_TIMESTAMP,
+    updated_at      DATETIME     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    KEY idx_feedback_project (project_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='试验报告';
+
+CREATE TABLE IF NOT EXISTS review_record (
+    id           BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id   BIGINT       NOT NULL,
+    type         VARCHAR(64)  NOT NULL,
+    result       VARCHAR(32),
+    opinion      VARCHAR(512),
+    reviewer_id  BIGINT,
+    created_at   DATETIME     DEFAULT CURRENT_TIMESTAMP,
+    KEY idx_review_project (project_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='审核复核记录';
+
+CREATE TABLE IF NOT EXISTS project_archive (
+    id             BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id     BIGINT       NOT NULL,
+    ledger_json    TEXT,
+    collect_remark VARCHAR(512),
+    brief_id       BIGINT,
+    created_at     DATETIME     DEFAULT CURRENT_TIMESTAMP,
+    updated_at     DATETIME     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    KEY idx_archive_project (project_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='项目档案';
+
+CREATE TABLE IF NOT EXISTS service_brief (
+    id            BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id    BIGINT       NOT NULL,
+    title         VARCHAR(256),
+    content       TEXT,
+    stats_json    TEXT,
+    audit_status  VARCHAR(32),
+    audit_remark  VARCHAR(512),
+    generator_id  BIGINT,
+    auditor_id    BIGINT,
+    created_at    DATETIME     DEFAULT CURRENT_TIMESTAMP,
+    updated_at    DATETIME     DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    KEY idx_brief_project (project_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='服务简报';

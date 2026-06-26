@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/stores/user'
+import { fetchUnreadCount } from '@/api/notification'
 import { MODULES } from '@/router'
 
 defineProps<{ portalTitle: string }>()
@@ -10,18 +11,52 @@ defineProps<{ portalTitle: string }>()
 const route = useRoute()
 const router = useRouter()
 const userStore = useUserStore()
+const unreadCount = ref(0)
+let pollTimer: ReturnType<typeof setInterval> | undefined
 
 const activeMenu = computed(() => (route.meta.module as string) || 'home')
 const portalPrefix = computed(() => route.path.split('/')[1])
 
+async function refreshUnread() {
+  if (!localStorage.getItem('token')) return
+  try {
+    unreadCount.value = (await fetchUnreadCount()).data.data.count
+  } catch {
+    unreadCount.value = 0
+  }
+}
+
+onMounted(() => {
+  refreshUnread()
+  pollTimer = setInterval(refreshUnread, 30000)
+})
+
+onUnmounted(() => {
+  if (pollTimer) clearInterval(pollTimer)
+})
+
 function goHome() {
   router.push(`/${portalPrefix.value}/home`)
+}
+
+function goMessages() {
+  router.push('/common/messages')
+}
+
+function goProfile() {
+  router.push('/common/profile')
 }
 
 function menuEnabled(mod: typeof MODULES[number]) {
   const role = userStore.profile?.role
   if (mod.path === 'dispatch') {
     return role === 'DISPATCHER' || role === 'ENTERPRISE' || role === 'TECHNICIAN'
+  }
+  if (mod.path === 'feedback') {
+    return role === 'AUDITOR' || role === 'ENTERPRISE' || role === 'TECHNICIAN'
+  }
+  if (mod.path === 'archive') {
+    return role === 'AUDITOR' || role === 'DISPATCHER' || role === 'ENTERPRISE'
   }
   return mod.path === 'demand' || mod.path === 'evaluation'
 }
@@ -48,6 +83,18 @@ function goModule(mod: typeof MODULES[number]) {
     else if (role === 'AUDITOR') {
       ElMessage.warning('中试调度管理仅中试调度员可操作，审核员请使用「中试评估管理」')
     }
+    return
+  }
+  if (mod.path === 'feedback') {
+    if (role === 'TECHNICIAN') router.push('/technician/feedback/submit')
+    else if (role === 'AUDITOR') router.push('/center/audit/feedback/audit')
+    else if (role === 'ENTERPRISE') router.push('/enterprise/feedback/review-detail')
+    return
+  }
+  if (mod.path === 'archive') {
+    if (role === 'AUDITOR') router.push('/center/audit/archive/ledger')
+    else if (role === 'DISPATCHER') router.push('/center/dispatch/archive/cycle-stats')
+    else if (role === 'ENTERPRISE') router.push('/enterprise/archive/brief-view')
   }
 }
 
@@ -79,8 +126,10 @@ function logout() {
         <b>广州生产力促进中心中试服务管理系统</b>
         <span class="user">
           {{ userStore.profile?.roleLabel }}　
-          <el-link type="primary" :underline="false">消息</el-link>　
-          <el-link type="primary" :underline="false">个人中心</el-link>　
+          <el-badge :value="unreadCount" :hidden="!unreadCount" :max="99">
+            <el-link type="primary" :underline="false" @click="goMessages">消息</el-link>
+          </el-badge>　
+          <el-link type="primary" :underline="false" @click="goProfile">个人中心</el-link>　
           <el-link type="danger" :underline="false" @click="logout">退出</el-link>
         </span>
       </header>

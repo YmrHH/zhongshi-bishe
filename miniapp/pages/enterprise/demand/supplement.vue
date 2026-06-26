@@ -10,7 +10,8 @@
 </template>
 
 <script setup>
-import { ref, onLoad } from '@dcloudio/uni-app'
+import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import { fetchDemandPreview, supplementDemand } from '../../../api/request.js'
 
 const projectId = ref(0)

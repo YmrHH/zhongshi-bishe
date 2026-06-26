@@ -2,6 +2,10 @@
   "name": "zhongshi-miniapp",
   "version": "1.0.0",
   "description": "中试服务管理系统 uni-app",
+  "scripts": {
+    "dev:mp-weixin": "uni -p mp-weixin",
+    "dev:h5": "uni -p h5"
+  },
   "dependencies": {
     "@dcloudio/uni-app": "3.0.0-4010520240507001",
     "@dcloudio/uni-app-plus": "3.0.0-4010520240507001",

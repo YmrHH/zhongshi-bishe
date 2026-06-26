@@ -3,6 +3,7 @@ package com.gzpprod.center.module.auth.controller;
 import com.gzpprod.center.common.Result;
 import com.gzpprod.center.module.auth.dto.LoginRequest;
 import com.gzpprod.center.module.auth.dto.LoginResponse;
+import com.gzpprod.center.module.auth.dto.ProfileUpdateRequest;
 import com.gzpprod.center.module.auth.dto.UserProfileResponse;
 import com.gzpprod.center.module.auth.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,5 +36,12 @@ public class AuthController {
     @GetMapping("/me")
     public Result<UserProfileResponse> me(Authentication authentication) {
         return Result.ok(authService.profile(authentication.getName()));
+    }
+
+    @Operation(summary = "更新个人资料")
+    @PutMapping("/profile")
+    public Result<UserProfileResponse> updateProfile(Authentication authentication,
+                                                     @RequestBody ProfileUpdateRequest request) {
+        return Result.ok(authService.updateProfile(authentication.getName(), request));
     }
 }

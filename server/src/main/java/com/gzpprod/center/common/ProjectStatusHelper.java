@@ -13,6 +13,8 @@ public final class ProjectStatusHelper {
             case DEMAND -> DemandStatus.of(project.getStatus()).label();
             case EVALUATION -> EvaluationStatus.of(project.getStatus()).label();
             case DISPATCH -> DispatchStatus.of(project.getStatus()).label();
+            case FEEDBACK -> FeedbackStatus.of(project.getStatus()).label();
+            case ARCHIVE -> ArchiveStatus.of(project.getStatus()).label();
             default -> project.getCurrentNode() != null ? project.getCurrentNode() : stage.label();
         };
     }

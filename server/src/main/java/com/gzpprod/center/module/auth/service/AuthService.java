@@ -6,6 +6,7 @@ import com.gzpprod.center.common.JwtTokenProvider;
 import com.gzpprod.center.common.UserRole;
 import com.gzpprod.center.module.auth.dto.LoginRequest;
 import com.gzpprod.center.module.auth.dto.LoginResponse;
+import com.gzpprod.center.module.auth.dto.ProfileUpdateRequest;
 import com.gzpprod.center.module.auth.dto.UserProfileResponse;
 import com.gzpprod.center.module.auth.entity.SysUser;
 import com.gzpprod.center.module.auth.mapper.SysUserMapper;
@@ -60,5 +61,25 @@ public class AuthService {
                 .phone(user.getPhone())
                 .homePath(role.homePath())
                 .build();
+    }
+
+    public UserProfileResponse updateProfile(String username, ProfileUpdateRequest request) {
+        SysUser user = userMapper.selectOne(new LambdaQueryWrapper<SysUser>()
+                .eq(SysUser::getUsername, username));
+        if (user == null) {
+            throw new BusinessException(401, "用户不存在");
+        }
+        if (request.getPhone() != null) {
+            user.setPhone(request.getPhone());
+        }
+        if (request.getNewPassword() != null && !request.getNewPassword().isBlank()) {
+            if (request.getOldPassword() == null
+                    || !passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
+                throw new BusinessException("原密码不正确");
+            }
+            user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        }
+        userMapper.updateById(user);
+        return profile(username);
     }
 }

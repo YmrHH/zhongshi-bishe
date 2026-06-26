@@ -5,7 +5,7 @@
       <text class="tag">{{ detail?.statusLabel }}</text>
     </view>
 
-    <view class="tip success" v-else-if="detail?.status === 'PROGRESS_ACKED'">
+    <view class="tip success" v-if="detail?.status === 'PROGRESS_ACKED'">
       您已确认知悉，本环节待办已结束；有新进度更新时将再次通知。
     </view>
     <view class="tip" v-else-if="detail?.stage === 'DISPATCH'">

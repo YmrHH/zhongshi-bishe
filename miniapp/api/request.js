@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost:8080/api'
+// 微信开发者工具模拟器可用 127.0.0.1；真机调试请改为电脑局域网 IP，如 http://192.168.x.x:8080/api
+const BASE_URL = 'http://127.0.0.1:8080/api'
 
 function request(url, method, data) {
   const token = uni.getStorageSync('token')
@@ -13,14 +14,16 @@ function request(url, method, data) {
       },
       success(res) {
         const body = res.data
-        if (body.code === 200) {
+        if (body && body.code === 200) {
           resolve(body.data)
         } else {
-          reject(new Error(body.message || '请求失败'))
+          reject(new Error((body && body.message) || `请求失败(${res.statusCode})`))
         }
       },
       fail(err) {
-        reject(err)
+        reject(new Error(
+          (err && err.errMsg) || '网络请求失败：请确认后端已启动(8080)，并在微信开发者工具中勾选「不校验合法域名」'
+        ))
       }
     })
   })
@@ -108,4 +111,36 @@ export function reportTaskProgress(taskId, data) {
 
 export function acknowledgeDispatchProgress(projectId, data) {
   return request(`/projects/${projectId}/dispatch/acknowledge`, 'POST', data || {})
+}
+
+export function fetchFeedbackDetail(projectId) {
+  return request(`/projects/${projectId}/feedback/detail`, 'GET')
+}
+
+export function fetchReviewDetail(projectId) {
+  return request(`/projects/${projectId}/feedback/review-detail`, 'GET')
+}
+
+export function submitFeedback(projectId, data) {
+  return request(`/projects/${projectId}/feedback/submit`, 'POST', data)
+}
+
+export function validateFeedback(projectId, data) {
+  return request(`/projects/${projectId}/feedback/validate`, 'POST', data)
+}
+
+export function modifyFeedback(projectId, data) {
+  return request(`/projects/${projectId}/feedback/modify`, 'POST', data)
+}
+
+export function reviewFeedbackOpinion(projectId, data) {
+  return request(`/projects/${projectId}/feedback/review-feedback`, 'POST', data)
+}
+
+export function fetchArchiveDetail(projectId) {
+  return request(`/projects/${projectId}/archive/detail`, 'GET')
+}
+
+export function fetchBrief(briefId) {
+  return request(`/archive/brief/${briefId}`, 'GET')
 }

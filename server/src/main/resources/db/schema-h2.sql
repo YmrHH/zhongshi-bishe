@@ -125,3 +125,50 @@ CREATE TABLE IF NOT EXISTS task_progress (
     content      VARCHAR(512),
     report_time  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE IF NOT EXISTS feedback_report (
+    id              BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id      BIGINT       NOT NULL,
+    task_id         BIGINT,
+    content         CLOB,
+    file_url        VARCHAR(512),
+    file_name       VARCHAR(256),
+    validate_remark VARCHAR(512),
+    modify_remark   VARCHAR(512),
+    created_at      TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    updated_at      TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS review_record (
+    id           BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id   BIGINT       NOT NULL,
+    type         VARCHAR(64)  NOT NULL,
+    result       VARCHAR(32),
+    opinion      VARCHAR(512),
+    reviewer_id  BIGINT,
+    created_at   TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS project_archive (
+    id             BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id     BIGINT       NOT NULL,
+    ledger_json    CLOB,
+    collect_remark VARCHAR(512),
+    brief_id       BIGINT,
+    created_at     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    updated_at     TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS service_brief (
+    id            BIGINT AUTO_INCREMENT PRIMARY KEY,
+    project_id    BIGINT       NOT NULL,
+    title         VARCHAR(256),
+    content       CLOB,
+    stats_json    CLOB,
+    audit_status  VARCHAR(32),
+    audit_remark  VARCHAR(512),
+    generator_id  BIGINT,
+    auditor_id    BIGINT,
+    created_at    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
+    updated_at    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP
+);

@@ -9,7 +9,8 @@
 </template>
 
 <script setup>
-import { ref, onLoad } from '@dcloudio/uni-app'
+import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import { fetchEvaluationDetail, supplementEvaluation } from '../../../api/request.js'
 
 const projectId = ref(0)

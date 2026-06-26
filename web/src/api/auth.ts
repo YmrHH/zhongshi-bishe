@@ -12,3 +12,7 @@ export function fetchMe() {
 export function fetchDashboard() {
   return http.get<ApiResult<DashboardData>>('/common/dashboard')
 }
+
+export function updateProfile(data: { phone?: string; oldPassword?: string; newPassword?: string }) {
+  return http.put<ApiResult<UserProfile>>('/auth/profile', data)
+}

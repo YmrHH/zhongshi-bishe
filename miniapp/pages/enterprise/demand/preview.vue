@@ -19,8 +19,9 @@
 </template>
 
 <script setup>
-import { ref, onLoad } from '@dcloudio/uni-app'
-import { createDemandProject, fetchDemandPreview, saveDemandDraft } from '../../api/request.js'
+import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
+import { createDemandProject, fetchDemandPreview, saveDemandDraft } from '../../../api/request.js'
 
 const projectId = ref(null)
 const detail = ref(null)

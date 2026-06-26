@@ -9,6 +9,12 @@ const MODULES = [
   { path: 'archive', title: '中试档案管理' }
 ]
 
+const PORTAL_ROLES: Record<string, string[]> = {
+  center: ['DISPATCHER', 'AUDITOR'],
+  enterprise: ['ENTERPRISE'],
+  technician: ['TECHNICIAN']
+}
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -124,6 +130,76 @@ const router = createRouter({
           path: 'dispatch/dispatch/archive',
           component: () => import('@/views/center/dispatch/dispatch/ArchiveView.vue'),
           meta: { title: '调度信息归档页', module: 'dispatch', roles: ['DISPATCHER'] }
+        },
+        {
+          path: 'audit/feedback/audit',
+          component: () => import('@/views/center/audit/feedback/AuditView.vue'),
+          meta: { title: '报告审核页', module: 'feedback', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'audit/feedback/review',
+          component: () => import('@/views/center/audit/feedback/ReviewView.vue'),
+          meta: { title: '复核确认页', module: 'feedback', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'audit/feedback/report-archive',
+          component: () => import('@/views/center/audit/feedback/ReportArchiveView.vue'),
+          meta: { title: '报告归档页', module: 'feedback', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'audit/feedback/review-notice',
+          component: () => import('@/views/center/audit/feedback/ReviewNoticeView.vue'),
+          meta: { title: '复核结果通知页', module: 'feedback', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'audit/feedback/feedback-audit',
+          component: () => import('@/views/center/audit/feedback/FeedbackAuditView.vue'),
+          meta: { title: '反馈审核页', module: 'feedback', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'audit/feedback/case-archive',
+          component: () => import('@/views/center/audit/feedback/CaseArchiveView.vue'),
+          meta: { title: '报告结案归档页', module: 'feedback', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'audit/archive/ledger',
+          component: () => import('@/views/center/audit/archive/LedgerView.vue'),
+          meta: { title: '台账维护页', module: 'archive', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'audit/archive/confirm',
+          component: () => import('@/views/center/audit/archive/ConfirmView.vue'),
+          meta: { title: '档案确认页', module: 'archive', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'audit/archive/collect',
+          component: () => import('@/views/center/audit/archive/CollectView.vue'),
+          meta: { title: '结案资料归集页', module: 'archive', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'audit/archive/brief-audit',
+          component: () => import('@/views/center/audit/archive/BriefAuditView.vue'),
+          meta: { title: '简报审核页', module: 'archive', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'audit/archive/archive',
+          component: () => import('@/views/center/audit/archive/ArchiveView.vue'),
+          meta: { title: '档案归档页', module: 'archive', roles: ['AUDITOR'] }
+        },
+        {
+          path: 'dispatch/archive/cycle-stats',
+          component: () => import('@/views/center/dispatch/archive/CycleStatsView.vue'),
+          meta: { title: '周期统计页', module: 'archive', roles: ['DISPATCHER'] }
+        },
+        {
+          path: 'dispatch/archive/success-rate',
+          component: () => import('@/views/center/dispatch/archive/SuccessRateView.vue'),
+          meta: { title: '成功率分析页', module: 'archive', roles: ['DISPATCHER'] }
+        },
+        {
+          path: 'dispatch/archive/brief-generate',
+          component: () => import('@/views/center/dispatch/archive/BriefGenerateView.vue'),
+          meta: { title: '简报生成页', module: 'archive', roles: ['DISPATCHER'] }
         }
       ]
     },
@@ -192,6 +268,21 @@ const router = createRouter({
           path: 'dispatch/progress-view',
           component: () => import('@/views/enterprise/dispatch/ProgressViewView.vue'),
           meta: { title: '执行进度查看页', module: 'dispatch' }
+        },
+        {
+          path: 'feedback/review-feedback',
+          component: () => import('@/views/enterprise/feedback/ReviewFeedbackView.vue'),
+          meta: { title: '复核意见反馈页', module: 'feedback' }
+        },
+        {
+          path: 'feedback/review-detail',
+          component: () => import('@/views/enterprise/feedback/ReviewDetailView.vue'),
+          meta: { title: '复核结果详情页', module: 'feedback' }
+        },
+        {
+          path: 'archive/brief-view',
+          component: () => import('@/views/enterprise/archive/BriefViewView.vue'),
+          meta: { title: '简报查看页', module: 'archive' }
         }
       ]
     },
@@ -220,6 +311,42 @@ const router = createRouter({
           path: 'dispatch/progress-report',
           component: () => import('@/views/technician/dispatch/ProgressReportView.vue'),
           meta: { title: '填报执行进度页', module: 'dispatch' }
+        },
+        {
+          path: 'feedback/submit',
+          component: () => import('@/views/technician/feedback/SubmitView.vue'),
+          meta: { title: '结果提交页', module: 'feedback' }
+        },
+        {
+          path: 'feedback/validate',
+          component: () => import('@/views/technician/feedback/ValidateView.vue'),
+          meta: { title: '数据校验页', module: 'feedback' }
+        },
+        {
+          path: 'feedback/modify',
+          component: () => import('@/views/technician/feedback/ModifyView.vue'),
+          meta: { title: '结果修改页', module: 'feedback' }
+        }
+      ]
+    },
+    {
+      path: '/common',
+      component: () => import('@/layouts/CommonShell.vue'),
+      children: [
+        {
+          path: 'messages',
+          component: () => import('@/views/common/MessagesView.vue'),
+          meta: { title: '消息中心' }
+        },
+        {
+          path: 'profile',
+          component: () => import('@/views/common/ProfileView.vue'),
+          meta: { title: '个人中心' }
+        },
+        {
+          path: 'forbidden',
+          component: () => import('@/views/common/ForbiddenView.vue'),
+          meta: { title: '无权访问' }
         }
       ]
     }
@@ -252,7 +379,13 @@ router.beforeEach(async (to, _from, next) => {
   const parentRoles = to.matched.find((r) => r.meta.roles)?.meta.roles as string[] | undefined
   const roles = routeRoles || parentRoles
   if (roles && store.profile && !roles.includes(store.profile.role)) {
-    next(store.profile.homePath)
+    next({ path: '/common/forbidden', query: { from: to.path.split('/')[1] || 'unknown' } })
+    return
+  }
+  const portal = to.path.split('/')[1]
+  const portalRoles = PORTAL_ROLES[portal]
+  if (portalRoles && store.profile && !portalRoles.includes(store.profile.role)) {
+    next({ path: '/common/forbidden', query: { from: portal } })
     return
   }
   next()

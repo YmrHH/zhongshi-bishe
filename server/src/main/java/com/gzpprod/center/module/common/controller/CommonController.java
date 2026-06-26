@@ -9,6 +9,8 @@ import com.gzpprod.center.module.demand.dto.DemandTodoItem;
 import com.gzpprod.center.module.demand.service.DemandService;
 import com.gzpprod.center.module.evaluation.service.EvaluationService;
 import com.gzpprod.center.module.dispatch.service.DispatchService;
+import com.gzpprod.center.module.feedback.service.FeedbackService;
+import com.gzpprod.center.module.archive.service.ArchiveService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +33,8 @@ public class CommonController {
     private final DemandService demandService;
     private final EvaluationService evaluationService;
     private final DispatchService dispatchService;
+    private final FeedbackService feedbackService;
+    private final ArchiveService archiveService;
     private final SysUserMapper userMapper;
 
     @Operation(summary = "工作台首页统计")
@@ -41,6 +45,8 @@ public class CommonController {
         allTodos.addAll(demandService.listTodos(user));
         allTodos.addAll(evaluationService.listTodos(user));
         allTodos.addAll(dispatchService.listTodos(user));
+        allTodos.addAll(feedbackService.listTodos(user));
+        allTodos.addAll(archiveService.listTodos(user));
 
         Map<String, Integer> stats = new LinkedHashMap<>();
         stats.put("pending", (int) allTodos.stream()
@@ -82,6 +88,12 @@ public class CommonController {
         }
         if (t.getRoute().contains("/dispatch/")) {
             return "中试调度管理";
+        }
+        if (t.getRoute().contains("/feedback/")) {
+            return "中试反馈管理";
+        }
+        if (t.getRoute().contains("/archive/")) {
+            return "中试档案管理";
         }
         return "中试需求管理";
     }

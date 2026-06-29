@@ -34,7 +34,7 @@ public enum DemandStatus {
     }
 
     public static Set<DemandStatus> auditorTodos() {
-        return Set.of(ACCEPTING, VERIFYING);
+        return Set.of(ACCEPTING);
     }
 
     public static Set<DemandStatus> enterpriseTodos() {

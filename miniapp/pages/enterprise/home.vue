@@ -14,6 +14,7 @@
       <text class="section-title">快捷入口</text>
       <view class="actions">
         <view class="action" @click="go('/pages/enterprise/demand/preview')">提交需求</view>
+        <view class="action" @click="go('/pages/enterprise/demand/projects')">我的需求</view>
         <view class="action" @click="goTodo">待办办理</view>
         <view class="action" @click="go('/pages/enterprise/evaluation/conclusion-detail')">评估详情</view>
       </view>

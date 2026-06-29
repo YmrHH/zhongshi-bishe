@@ -19,6 +19,10 @@
       }
     },
     {
+      "path": "pages/enterprise/demand/projects",
+      "style": { "navigationBarTitleText": "我的需求项目" }
+    },
+    {
       "path": "pages/enterprise/demand/preview",
       "style": { "navigationBarTitleText": "需求预览确认" }
     },

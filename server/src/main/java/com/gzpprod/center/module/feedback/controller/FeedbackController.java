@@ -86,7 +86,6 @@ public class FeedbackController {
         if (request == null) {
             request = new FeedbackActionRequest();
         }
-        request.setPassed(true);
         return Result.ok(feedbackService.review(user, id, request));
     }
 

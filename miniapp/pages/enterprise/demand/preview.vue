@@ -10,7 +10,7 @@
         <view class="input">{{ form.pilotType || '选择中试类型' }}</view>
       </picker>
       <input class="input" v-model="form.contactName" placeholder="联系人" />
-      <input class="input" v-model="form.contactPhone" placeholder="联系电话" />
+      <input class="input" v-model="form.contactPhone" type="number" maxlength="11" placeholder="联系电话（11位手机号）" />
       <textarea class="textarea" v-model="form.content" placeholder="需求说明" />
       <button class="btn" @click="saveDraft">保存草稿</button>
       <button class="btn primary" @click="goSubmit">确认并提交</button>
@@ -52,6 +52,10 @@ async function ensureProject() {
 }
 
 async function saveDraft() {
+  if (form.value.contactPhone && !/^1\d{10}$/.test(form.value.contactPhone)) {
+    uni.showToast({ title: '联系电话须为11位手机号', icon: 'none' })
+    return
+  }
   try {
     const id = await ensureProject()
     await saveDemandDraft(id, form.value)
@@ -62,6 +66,10 @@ async function saveDraft() {
 }
 
 async function goSubmit() {
+  if (form.value.contactPhone && !/^1\d{10}$/.test(form.value.contactPhone)) {
+    uni.showToast({ title: '联系电话须为11位手机号', icon: 'none' })
+    return
+  }
   try {
     const id = await ensureProject()
     await saveDemandDraft(id, form.value)

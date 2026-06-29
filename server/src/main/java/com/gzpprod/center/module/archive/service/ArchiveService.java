@@ -330,24 +330,34 @@ public class ArchiveService {
     }
 
     private List<ArchiveDetailResponse.ProgressStep> buildSteps(ArchiveStatus current) {
-        record Node(String name, ArchiveStatus threshold) {}
-        List<Node> nodes = List.of(
-                new Node("项目台账维护", ArchiveStatus.PENDING),
-                new Node("档案信息确认", ArchiveStatus.LEDGER_OK),
-                new Node("结案资料归集", ArchiveStatus.CONFIRMED),
-                new Node("中试周期统计", ArchiveStatus.COLLECTED),
-                new Node("服务简报生成", ArchiveStatus.STATS_OK),
-                new Node("简报内容审核", ArchiveStatus.BRIEF_GENERATED),
-                new Node("档案信息归档", ArchiveStatus.BRIEF_PUBLISHED)
+        List<String> nodes = List.of(
+                "项目台账维护",
+                "档案信息确认",
+                "结案资料归集",
+                "中试周期统计",
+                "服务简报生成",
+                "简报内容审核",
+                "档案信息归档"
         );
-        int currentOrd = current.ordinal();
+        int currentIdx = archiveStepIndex(current);
         List<ArchiveDetailResponse.ProgressStep> steps = new ArrayList<>();
-        for (Node node : nodes) {
-            String st = node.threshold.ordinal() < currentOrd ? "done"
-                    : node.threshold == current ? "active" : "pending";
-            steps.add(ArchiveDetailResponse.ProgressStep.builder().node(node.name()).status(st).build());
+        for (int i = 0; i < nodes.size(); i++) {
+            String st = i < currentIdx ? "done" : (i == currentIdx ? "active" : "pending");
+            steps.add(ArchiveDetailResponse.ProgressStep.builder().node(nodes.get(i)).status(st).build());
         }
         return steps;
+    }
+
+    private static int archiveStepIndex(ArchiveStatus status) {
+        return switch (status) {
+            case PENDING, LEDGER_INCOMPLETE -> 0;
+            case LEDGER_OK -> 1;
+            case CONFIRMED -> 2;
+            case COLLECTED, STATS_UNAVAILABLE -> 3;
+            case STATS_OK, BRIEF_RETURNED -> 4;
+            case BRIEF_GENERATED -> 5;
+            case BRIEF_PUBLISHED, CLOSED -> 6;
+        };
     }
 
     private ArchiveStatsResponse buildStats(boolean requireAvailability) {
@@ -534,5 +544,18 @@ public class ArchiveService {
 
     private String text(String value, String fallback) {
         return StringUtils.hasText(value) ? value : fallback;
+    }
+
+    /** §17.9 跨模块进度：档案段环节步骤 */
+    public List<ArchiveDetailResponse.ProgressStep> exportProgressSteps(TrialProject project) {
+        ArchiveStatus status;
+        if (ProjectStage.ARCHIVE.name().equals(project.getStage())) {
+            status = ArchiveStatus.of(project.getStatus());
+        } else if (ProjectStage.CLOSED.name().equals(project.getStage())) {
+            status = ArchiveStatus.CLOSED;
+        } else {
+            status = ArchiveStatus.CLOSED;
+        }
+        return buildSteps(status);
     }
 }

@@ -246,7 +246,12 @@ public class DispatchService {
     public DispatchDetailResponse execConfirm(SysUser user, Long projectId, DispatchActionRequest request) {
         SecurityUtils.requireRole(user, UserRole.DISPATCHER);
         TrialProject project = requireDispatchProject(projectId);
-        requireStatus(project, DispatchStatus.EXECUTING, DispatchStatus.CONFIRMED, DispatchStatus.PROGRESS_ACKED);
+        requireStatus(project, DispatchStatus.EXECUTING, DispatchStatus.PROGRESS_ACKED);
+        DispatchTask task = requireTaskOrThrow(projectId);
+        int progressPct = task.getProgressPct() == null ? 0 : task.getProgressPct();
+        if (progressPct < 100) {
+            throw new BusinessException("请先完成100%进度填报后再确认执行结果");
+        }
         transition(project, DispatchStatus.EXEC_DONE, "调度信息归档", user.getId(),
                 text(request.getRemark(), "执行结果确认通过"));
         closeDispatchTask(projectId);
@@ -312,13 +317,13 @@ public class DispatchService {
                 .resourceName(resource != null ? resource.getName() : null)
                 .technicianId(task != null ? task.getTechnicianId() : null)
                 .technicianName(technician != null ? technician.getRealName() : null)
-                .progressPct(task != null ? task.getProgressPct() : 0)
+                .progressPct(task != null ? (task.getProgressPct() == null ? 0 : task.getProgressPct()) : 0)
                 .taskRemark(task != null ? task.getRemark() : null)
                 .evaluationSummary(buildEvaluationSummary(evaluation))
                 .resources(listResources())
                 .technicians(listTechnicians())
                 .progressRecords(records.stream().map(r -> DispatchDetailResponse.ProgressVo.builder()
-                        .progressPct(r.getProgressPct())
+                        .progressPct(r.getProgressPct() == null ? 0 : r.getProgressPct())
                         .content(r.getContent())
                         .reportTime(r.getReportTime())
                         .build()).toList())
@@ -370,7 +375,7 @@ public class DispatchService {
                 case MATCH, MATCH_FAILED -> "/center/dispatch/dispatch/match";
                 case ASSIGNED -> "/center/dispatch/dispatch/assign";
                 case PENDING_RECEIVE -> "/center/dispatch/dispatch/assign-notice";
-                case EXECUTING, CONFIRMED, PROGRESS_ACKED -> "/center/dispatch/dispatch/supervise";
+                case RECEIVED, EXECUTING, CONFIRMED, PROGRESS_ACKED -> "/center/dispatch/dispatch/supervise";
                 case EXEC_DONE -> "/center/dispatch/dispatch/archive";
                 default -> "/center/dispatch/dispatch/match";
             };
@@ -447,24 +452,35 @@ public class DispatchService {
     }
 
     private List<DispatchDetailResponse.StepVo> buildSteps(DispatchStatus current) {
-        record Node(String name, DispatchStatus threshold) {}
+        record Node(String name) {}
         List<Node> nodes = List.of(
-                new Node("中试资源匹配", DispatchStatus.MATCH),
-                new Node("中试任务派发", DispatchStatus.ASSIGNED),
-                new Node("派单结果通知", DispatchStatus.PENDING_RECEIVE),
-                new Node("接收任务执行", DispatchStatus.RECEIVED),
-                new Node("任务接收确认", DispatchStatus.CONFIRMED),
-                new Node("填报执行进度", DispatchStatus.EXECUTING),
-                new Node("执行结果确认", DispatchStatus.EXEC_DONE)
+                new Node("中试资源匹配"),
+                new Node("中试任务派发"),
+                new Node("派单结果通知"),
+                new Node("接收任务执行"),
+                new Node("任务接收确认"),
+                new Node("填报执行进度"),
+                new Node("执行结果确认")
         );
-        int ord = current.ordinal();
+        int currentIdx = dispatchStepIndex(current);
         List<DispatchDetailResponse.StepVo> steps = new ArrayList<>();
-        for (Node node : nodes) {
-            String st = node.threshold.ordinal() < ord ? "done"
-                    : node.threshold == current ? "active" : "pending";
-            steps.add(DispatchDetailResponse.StepVo.builder().node(node.name()).status(st).build());
+        for (int i = 0; i < nodes.size(); i++) {
+            String st = i < currentIdx ? "done" : (i == currentIdx ? "active" : "pending");
+            steps.add(DispatchDetailResponse.StepVo.builder().node(nodes.get(i).name()).status(st).build());
         }
         return steps;
+    }
+
+    private static int dispatchStepIndex(DispatchStatus status) {
+        return switch (status) {
+            case MATCH, MATCH_FAILED -> 0;
+            case ASSIGNED, NOTICED -> 1;
+            case PENDING_RECEIVE -> 2;
+            case RECEIVED -> 3;
+            case CONFIRMED -> 4;
+            case EXECUTING, PROGRESS_ACKED -> 5;
+            case EXEC_DONE, ARCHIVED -> 6;
+        };
     }
 
     private void closeDispatchTask(Long projectId) {
@@ -573,5 +589,12 @@ public class DispatchService {
 
     private String text(String value, String defaultValue) {
         return StringUtils.hasText(value) ? value : defaultValue;
+    }
+
+    /** §17.9 跨模块进度：调度段环节步骤 */
+    public List<DispatchDetailResponse.StepVo> exportProgressSteps(TrialProject project) {
+        DispatchStatus status = ProjectStage.DISPATCH.name().equals(project.getStage())
+                ? DispatchStatus.of(project.getStatus()) : DispatchStatus.ARCHIVED;
+        return buildSteps(status);
     }
 }

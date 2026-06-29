@@ -1,0 +1,14 @@
+{
+  "name": "zhongshi-e2e-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "广州生产力促进中心中试服务管理系统 — API 自动化测试",
+  "type": "module",
+  "scripts": {
+    "demand:flow": "node runners/demand-full-flow.mjs",
+    "fixtures:init": "node fixtures/materials/init-fixtures.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -37,8 +37,7 @@ public class SecurityConfig {
                                 "/doc.html",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
-                                "/webjars/**",
-                                "/uploads/**")
+                                "/webjars/**")
                         .permitAll()
                         .anyRequest().authenticated())
                 .headers(h -> h.frameOptions(f -> f.sameOrigin()))

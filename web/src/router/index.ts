@@ -54,7 +54,7 @@ const router = createRouter({
         {
           path: 'audit/demand/verify',
           component: () => import('@/views/center/audit/demand/VerifyView.vue'),
-          meta: { title: '材料核验页', module: 'demand', roles: ['AUDITOR'] }
+          meta: { title: '受理材料审核页', module: 'demand', roles: ['AUDITOR'] }
         },
         {
           path: 'audit/demand/accept-result',
@@ -213,6 +213,11 @@ const router = createRouter({
           name: 'EnterpriseHome',
           component: () => import('@/views/enterprise/HomeView.vue'),
           meta: { title: '企业门户首页', module: 'home' }
+        },
+        {
+          path: 'demand/projects',
+          component: () => import('@/views/enterprise/demand/ProjectListView.vue'),
+          meta: { title: '我的需求项目', module: 'demand' }
         },
         {
           path: 'demand/preview',

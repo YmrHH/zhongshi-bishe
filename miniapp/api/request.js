@@ -69,6 +69,13 @@ export function fetchDemandPreview(projectId) {
   return request(`/projects/${projectId}/demand/preview`, 'GET')
 }
 
+export function fetchEnterpriseDemandProjects(page = 1, pageSize = 20, stageFilter = 'ALL', keyword = '') {
+  let url = `/demand/enterprise/projects?page=${page}&pageSize=${pageSize}&stageFilter=${encodeURIComponent(stageFilter)}`
+  const kw = (keyword || '').trim()
+  if (kw) url += `&keyword=${encodeURIComponent(kw)}`
+  return request(url, 'GET')
+}
+
 export function saveDemandDraft(projectId, data) {
   return request(`/projects/${projectId}/demand/draft`, 'POST', data)
 }
@@ -87,6 +94,10 @@ export function receiptDemand(projectId) {
 
 export function fetchDemandProgress(projectId) {
   return request(`/projects/${projectId}/demand/progress`, 'GET')
+}
+
+export function fetchProjectProgress(projectId) {
+  return request(`/projects/${projectId}/progress`, 'GET')
 }
 
 export function fetchDemandTodos() {

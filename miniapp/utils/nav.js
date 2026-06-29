@@ -1,6 +1,7 @@
 /** Web 待办 route → 小程序页面路径 */
 export const ROUTE_MAP = {
   '/enterprise/demand/preview': '/pages/enterprise/demand/preview',
+  '/enterprise/demand/projects': '/pages/enterprise/demand/projects',
   '/enterprise/demand/submit': '/pages/enterprise/demand/submit',
   '/enterprise/demand/supplement': '/pages/enterprise/demand/supplement',
   '/enterprise/demand/receipt': '/pages/enterprise/demand/receipt',

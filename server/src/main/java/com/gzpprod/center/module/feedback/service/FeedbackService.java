@@ -68,17 +68,17 @@ public class FeedbackService {
         requireStatus(project, FeedbackStatus.SUBMITTED);
         assertTechnician(user, projectId);
         FeedbackReport report = requireReport(projectId);
-        if (Boolean.FALSE.equals(request.getPassed())) {
-            report.setValidateRemark(text(request.getRemark(), "数据校验未通过，请修改后重新提交"));
-            report.setUpdatedAt(LocalDateTime.now());
-            reportMapper.updateById(report);
-            transition(project, FeedbackStatus.PENDING, "试验结果提交", user.getId(), report.getValidateRemark());
-        } else {
+        if (Boolean.TRUE.equals(request.getPassed())) {
             report.setValidateRemark(text(request.getRemark(), "数据校验通过"));
             report.setUpdatedAt(LocalDateTime.now());
             reportMapper.updateById(report);
             transition(project, FeedbackStatus.VALIDATED, "中试报告审核", user.getId(), report.getValidateRemark());
             notifyAuditors(project);
+        } else {
+            report.setValidateRemark(text(request.getRemark(), "数据校验未通过，请修改后重新提交"));
+            report.setUpdatedAt(LocalDateTime.now());
+            reportMapper.updateById(report);
+            transition(project, FeedbackStatus.PENDING, "试验结果提交", user.getId(), report.getValidateRemark());
         }
         projectMapper.updateById(project);
         return getDetail(user, projectId);
@@ -90,13 +90,13 @@ public class FeedbackService {
         TrialProject project = requireFeedbackProject(projectId);
         requireStatus(project, FeedbackStatus.VALIDATED);
         saveReview(projectId, "REPORT_AUDIT", request, user.getId());
-        if (Boolean.FALSE.equals(request.getPassed())) {
+        if (Boolean.TRUE.equals(request.getPassed())) {
+            transition(project, FeedbackStatus.AUDIT_PASSED, "结果复核确认", user.getId(),
+                    text(request.getRemark(), "报告审核通过"));
+        } else {
             transition(project, FeedbackStatus.AUDIT_REJECTED, "试验结果修改", user.getId(),
                     text(request.getRemark(), "报告审核不通过，请修改"));
             notifyTechnician(project);
-        } else {
-            transition(project, FeedbackStatus.AUDIT_PASSED, "结果复核确认", user.getId(),
-                    text(request.getRemark(), "报告审核通过"));
         }
         projectMapper.updateById(project);
         return getDetail(user, projectId);
@@ -126,8 +126,16 @@ public class FeedbackService {
         TrialProject project = requireFeedbackProject(projectId);
         requireStatus(project, FeedbackStatus.AUDIT_PASSED);
         saveReview(projectId, "REVIEW", request, user.getId());
-        transition(project, FeedbackStatus.REVIEWED, "中试报告归档", user.getId(),
-                text(request.getRemark(), "复核确认通过"));
+        if (Boolean.FALSE.equals(request.getPassed())) {
+            transition(project, FeedbackStatus.AUDIT_REJECTED, "试验结果修改", user.getId(),
+                    text(request.getRemark(), "复核不通过，请修改试验结果"));
+            notifyTechnician(project);
+        } else if (Boolean.TRUE.equals(request.getPassed())) {
+            transition(project, FeedbackStatus.REVIEWED, "中试报告归档", user.getId(),
+                    text(request.getRemark(), "复核确认通过"));
+        } else {
+            throw new BusinessException("请选择复核结果（通过或不通过）");
+        }
         projectMapper.updateById(project);
         return getDetail(user, projectId);
     }
@@ -351,26 +359,38 @@ public class FeedbackService {
     }
 
     private List<FeedbackDetailResponse.ProgressStep> buildSteps(FeedbackStatus current) {
-        record Node(String name, FeedbackStatus threshold) {}
-        List<Node> nodes = List.of(
-                new Node("试验结果提交", FeedbackStatus.PENDING),
-                new Node("试验数据校验", FeedbackStatus.SUBMITTED),
-                new Node("中试报告审核", FeedbackStatus.VALIDATED),
-                new Node("结果复核确认", FeedbackStatus.AUDIT_PASSED),
-                new Node("中试报告归档", FeedbackStatus.REVIEWED),
-                new Node("复核结果通知", FeedbackStatus.REPORT_ARCHIVED),
-                new Node("复核意见反馈", FeedbackStatus.REVIEW_NOTICED),
-                new Node("反馈结果审核", FeedbackStatus.REVIEW_FEEDBACK),
-                new Node("报告信息归档", FeedbackStatus.FEEDBACK_AUDIT_PASSED)
+        List<String> nodes = List.of(
+                "试验结果提交",
+                "试验数据校验",
+                "中试报告审核",
+                "结果复核确认",
+                "中试报告归档",
+                "复核结果通知",
+                "复核意见反馈",
+                "反馈结果审核",
+                "报告信息归档"
         );
-        int currentOrd = current.ordinal();
+        int currentIdx = feedbackStepIndex(current);
         List<FeedbackDetailResponse.ProgressStep> steps = new ArrayList<>();
-        for (Node node : nodes) {
-            String st = node.threshold.ordinal() < currentOrd ? "done"
-                    : node.threshold == current ? "active" : "pending";
-            steps.add(FeedbackDetailResponse.ProgressStep.builder().node(node.name()).status(st).build());
+        for (int i = 0; i < nodes.size(); i++) {
+            String st = i < currentIdx ? "done" : (i == currentIdx ? "active" : "pending");
+            steps.add(FeedbackDetailResponse.ProgressStep.builder().node(nodes.get(i)).status(st).build());
         }
         return steps;
+    }
+
+    private static int feedbackStepIndex(FeedbackStatus status) {
+        return switch (status) {
+            case PENDING -> 0;
+            case SUBMITTED -> 1;
+            case VALIDATED, AUDIT_REJECTED -> 2;
+            case AUDIT_PASSED -> 3;
+            case REVIEWED -> 4;
+            case REPORT_ARCHIVED -> 5;
+            case REVIEW_NOTICED -> 6;
+            case REVIEW_FEEDBACK, FEEDBACK_AUDIT_REJECTED -> 7;
+            case FEEDBACK_AUDIT_PASSED, CASE_ARCHIVED -> 8;
+        };
     }
 
     private void transition(TrialProject project, FeedbackStatus to, String node, Long operatorId, String remark) {
@@ -509,5 +529,12 @@ public class FeedbackService {
 
     private String text(String value, String fallback) {
         return StringUtils.hasText(value) ? value : fallback;
+    }
+
+    /** §17.9 跨模块进度：反馈段环节步骤 */
+    public List<FeedbackDetailResponse.ProgressStep> exportProgressSteps(TrialProject project) {
+        FeedbackStatus status = ProjectStage.FEEDBACK.name().equals(project.getStage())
+                ? FeedbackStatus.of(project.getStatus()) : FeedbackStatus.CASE_ARCHIVED;
+        return buildSteps(status);
     }
 }

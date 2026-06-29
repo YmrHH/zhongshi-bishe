@@ -32,12 +32,16 @@ export interface DemandDetail {
   acceptResult?: string
   enterpriseName?: string
   materials: Array<MaterialItem & { id?: number; version?: number }>
+  submittedAt?: string
+  materialCount?: number
   steps: Array<{ node: string; status: string }>
+  phaseSteps?: Array<{ node: string; status: string }>
   logs: Array<{ fromStatus: string; toStatus: string; remark: string; time: string }>
 }
 
 export interface DemandTodo {
   projectId: number
+  taskId?: number
   projectNo: string
   title: string
   status: string
@@ -51,4 +55,16 @@ export interface DemandTodo {
 export interface ProjectCreateResult {
   projectId: number
   projectNo: string
+}
+
+export interface DemandEnterpriseProject {
+  projectId: number
+  projectNo: string
+  title: string
+  stage: string
+  status: string
+  statusLabel: string
+  currentNode: string
+  submittedAt: string
+  canViewProgress: boolean
 }

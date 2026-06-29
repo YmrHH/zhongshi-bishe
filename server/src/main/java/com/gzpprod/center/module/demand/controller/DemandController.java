@@ -1,5 +1,6 @@
 package com.gzpprod.center.module.demand.controller;
 
+import com.gzpprod.center.common.PageResult;
 import com.gzpprod.center.common.Result;
 import com.gzpprod.center.common.SecurityUtils;
 import com.gzpprod.center.module.auth.mapper.SysUserMapper;
@@ -22,11 +23,26 @@ public class DemandController {
     private final DemandService demandService;
     private final SysUserMapper userMapper;
 
-    @Operation(summary = "需求待办列表")
+    @Operation(summary = "需求待办列表（分页）")
     @GetMapping("/api/demand/todos")
-    public Result<List<DemandTodoItem>> todos(Authentication authentication) {
+    public Result<PageResult<DemandTodoItem>> todos(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int pageSize,
+            Authentication authentication) {
         var user = SecurityUtils.requireUser(authentication, userMapper);
-        return Result.ok(demandService.listTodos(user));
+        return Result.ok(demandService.listTodosPage(user, page, pageSize));
+    }
+
+    @Operation(summary = "企业我的需求项目（分页）")
+    @GetMapping("/api/demand/enterprise/projects")
+    public Result<PageResult<DemandEnterpriseProjectItem>> enterpriseProjects(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int pageSize,
+            @RequestParam(defaultValue = "ALL") String stageFilter,
+            @RequestParam(required = false) String keyword,
+            Authentication authentication) {
+        var user = SecurityUtils.requireUser(authentication, userMapper);
+        return Result.ok(demandService.listEnterpriseProjectsPage(user, page, pageSize, stageFilter, keyword));
     }
 
     @Operation(summary = "创建需求项目（草稿）")
@@ -74,7 +90,7 @@ public class DemandController {
         return Result.ok(demandService.acceptRegister(user, id, request));
     }
 
-    @Operation(summary = "材料核验")
+    @Operation(summary = "材料核验与受理决定（一步完成）")
     @PostMapping("/api/projects/{id}/demand/verify")
     public Result<DemandDetailResponse> verify(@PathVariable Long id,
                                                @RequestBody DemandVerifyRequest request,

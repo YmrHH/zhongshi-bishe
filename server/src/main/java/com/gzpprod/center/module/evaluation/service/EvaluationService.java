@@ -332,24 +332,35 @@ public class EvaluationService {
     }
 
     private List<EvaluationDetailResponse.ProgressStep> buildSteps(EvaluationStatus current) {
-        record Node(String name, EvaluationStatus threshold) {}
-        List<Node> nodes = List.of(
-                new Node("评估前置核查", EvaluationStatus.PRECHECK),
-                new Node("中试条件评估", EvaluationStatus.CONDITION_EVAL),
-                new Node("资源需求核定", EvaluationStatus.RESOURCE),
-                new Node("技术可行性审", EvaluationStatus.FEASIBILITY),
-                new Node("评估结论出具", EvaluationStatus.CONCLUSION),
-                new Node("评估结果签收", EvaluationStatus.RECEIPTED),
-                new Node("评估信息归档", EvaluationStatus.ARCHIVED)
+        List<String> nodes = List.of(
+                "评估前置核查",
+                "中试条件评估",
+                "资源需求核定",
+                "技术可行性审",
+                "评估结论出具",
+                "评估结果签收",
+                "评估信息归档"
         );
-        int currentOrd = current.ordinal();
+        int currentIdx = evaluationStepIndex(current);
         List<EvaluationDetailResponse.ProgressStep> steps = new ArrayList<>();
-        for (Node node : nodes) {
-            String st = node.threshold.ordinal() < currentOrd ? "done"
-                    : node.threshold == current ? "active" : "pending";
-            steps.add(EvaluationDetailResponse.ProgressStep.builder().node(node.name()).status(st).build());
+        for (int i = 0; i < nodes.size(); i++) {
+            String st = i < currentIdx ? "done" : (i == currentIdx ? "active" : "pending");
+            steps.add(EvaluationDetailResponse.ProgressStep.builder().node(nodes.get(i)).status(st).build());
         }
         return steps;
+    }
+
+    private static int evaluationStepIndex(EvaluationStatus status) {
+        return switch (status) {
+            case PRECHECK -> 0;
+            case CONDITION_EVAL, CONDITION_RETURNED -> 1;
+            case RESOURCE -> 2;
+            case FEASIBILITY, FEASIBILITY_RETURNED -> 3;
+            case CONCLUSION -> 4;
+            case RECEIPTED -> 5;
+            case FEEDBACK -> 5;
+            case ARCHIVED -> 6;
+        };
     }
 
     private void transition(TrialProject project, EvaluationStatus to, String node, Long operatorId, String remark) {
@@ -441,5 +452,12 @@ public class EvaluationService {
 
     private String text(String value, String defaultValue) {
         return StringUtils.hasText(value) ? value : defaultValue;
+    }
+
+    /** §17.9 跨模块进度：评估段环节步骤 */
+    public List<EvaluationDetailResponse.ProgressStep> exportProgressSteps(TrialProject project) {
+        EvaluationStatus status = ProjectStage.EVALUATION.name().equals(project.getStage())
+                ? EvaluationStatus.of(project.getStatus()) : EvaluationStatus.ARCHIVED;
+        return buildSteps(status);
     }
 }

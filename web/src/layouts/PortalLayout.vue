@@ -65,7 +65,7 @@ function goModule(mod: typeof MODULES[number]) {
   if (!menuEnabled(mod)) return
   const role = userStore.profile?.role
   if (mod.path === 'demand') {
-    if (role === 'ENTERPRISE') router.push('/enterprise/demand/preview')
+    if (role === 'ENTERPRISE') router.push('/enterprise/demand/projects')
     else if (role === 'DISPATCHER') router.push('/center/dispatch/demand/workbench')
     else if (role === 'AUDITOR') router.push('/center/audit/demand/verify')
     return
@@ -127,10 +127,10 @@ function logout() {
         <span class="user">
           {{ userStore.profile?.roleLabel }}　
           <el-badge :value="unreadCount" :hidden="!unreadCount" :max="99">
-            <el-link type="primary" :underline="false" @click="goMessages">消息</el-link>
+            <el-link type="primary" underline="never" @click="goMessages">消息</el-link>
           </el-badge>　
-          <el-link type="primary" :underline="false" @click="goProfile">个人中心</el-link>　
-          <el-link type="danger" :underline="false" @click="logout">退出</el-link>
+          <el-link type="primary" underline="never" @click="goProfile">个人中心</el-link>　
+          <el-link type="danger" underline="never" @click="logout">退出</el-link>
         </span>
       </header>
       <div class="content">

@@ -2,6 +2,8 @@
 import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
+import DemandPageHeader from '@/components/DemandPageHeader.vue'
+import DemandPhaseStepBar from '@/components/DemandPhaseStepBar.vue'
 import ProjectStepBar from '@/components/ProjectStepBar.vue'
 import StatusTag from '@/components/StatusTag.vue'
 import MaterialUpload from '@/components/MaterialUpload.vue'
@@ -65,10 +67,16 @@ async function ensureProject() {
 }
 
 async function onSaveDraft() {
+  if (form.value.contactPhone && !/^1\d{10}$/.test(form.value.contactPhone)) {
+    ElMessage.warning('联系电话须为11位手机号')
+    return
+  }
   loading.value = true
   try {
     const id = await ensureProject()
     await saveDemandDraft(id, form.value)
+    const res = await fetchDemandPreview(id)
+    detail.value = res.data.data
     ElMessage.success('草稿已保存')
   } catch (e) {
     if (e instanceof Error && e.message !== 'no title') {
@@ -80,6 +88,10 @@ async function onSaveDraft() {
 }
 
 async function onGoSubmit() {
+  if (form.value.contactPhone && !/^1\d{10}$/.test(form.value.contactPhone)) {
+    ElMessage.warning('联系电话须为11位手机号')
+    return
+  }
   loading.value = true
   try {
     const id = await ensureProject()
@@ -97,11 +109,12 @@ async function onGoSubmit() {
 
 <template>
   <div v-loading="loading">
-    <div class="crumb">首页 / 中试需求管理 / 需求预览确认页</div>
-    <h1 class="title">需求预览确认页</h1>
-    <StatusTag v-if="detail" :label="detail.statusLabel" :status="detail.status" />
-
-    <ProjectStepBar v-if="detail?.steps?.length" :steps="detail.steps" />
+    <DemandPageHeader
+      title="需求预览确认页"
+      crumb="首页 / 中试需求管理 / 需求预览确认页"
+    />
+    <StatusTag v-if="detail" :label="detail.statusLabel" :status="detail.status" style="margin-bottom:8px" />
+    <DemandPhaseStepBar v-if="detail?.phaseSteps?.length" :steps="detail.phaseSteps" />
 
     <div class="page-card">
       <h3>需求信息预览</h3>
@@ -123,7 +136,7 @@ async function onGoSubmit() {
           <el-input v-model="form.contactName" />
         </el-form-item>
         <el-form-item label="联系电话">
-          <el-input v-model="form.contactPhone" />
+          <el-input v-model="form.contactPhone" maxlength="11" placeholder="11位手机号" show-word-limit />
         </el-form-item>
         <el-form-item label="需求说明">
           <el-input v-model="form.content" type="textarea" :rows="4" />
@@ -139,8 +152,3 @@ async function onGoSubmit() {
     </div>
   </div>
 </template>
-
-<style scoped>
-.crumb { color: #909399; font-size: 14px; }
-.title { font-size: 30px; margin: 12px 0; }
-</style>

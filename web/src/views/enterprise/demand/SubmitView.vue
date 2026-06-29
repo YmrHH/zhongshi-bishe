@@ -2,6 +2,8 @@
 import { onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
+import DemandPageHeader from '@/components/DemandPageHeader.vue'
+import DemandPhaseStepBar from '@/components/DemandPhaseStepBar.vue'
 import ProjectStepBar from '@/components/ProjectStepBar.vue'
 import StatusTag from '@/components/StatusTag.vue'
 import MaterialUpload from '@/components/MaterialUpload.vue'
@@ -59,10 +61,9 @@ async function onSubmit() {
 
 <template>
   <div v-loading="loading">
-    <div class="crumb">首页 / 中试需求管理 / 需求填报页</div>
-    <h1 class="title">需求填报页</h1>
-    <StatusTag v-if="detail" :label="detail.statusLabel" :status="detail.status" />
-    <ProjectStepBar v-if="detail?.steps?.length" :steps="detail.steps" />
+    <DemandPageHeader title="需求填报页" crumb="首页 / 中试需求管理 / 需求填报页" />
+    <StatusTag v-if="detail" :label="detail.statusLabel" :status="detail.status" style="margin-bottom:8px" />
+    <DemandPhaseStepBar v-if="detail?.phaseSteps?.length" :steps="detail.phaseSteps" />
 
     <div class="page-card">
       <h3>中试需求提交</h3>
@@ -79,12 +80,6 @@ async function onSubmit() {
         </el-form-item>
       </el-form>
       <el-button type="primary" @click="onSubmit">提交需求</el-button>
-      <el-button @click="router.back()">返回预览</el-button>
     </div>
   </div>
 </template>
-
-<style scoped>
-.crumb { color: #909399; font-size: 14px; }
-.title { font-size: 30px; margin: 12px 0; }
-</style>

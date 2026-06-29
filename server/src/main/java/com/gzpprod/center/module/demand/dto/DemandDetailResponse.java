@@ -26,8 +26,12 @@ public class DemandDetailResponse {
     private String acceptOpinion;
     private String acceptResult;
     private String enterpriseName;
+    private LocalDateTime submittedAt;
+    private Integer materialCount;
     private List<MaterialVo> materials;
     private List<ProgressStep> steps;
+    /** 需求模块五阶段进度（填报→登记→审核→签收→归档查进度） */
+    private List<ProgressStep> phaseSteps;
     private List<LogItem> logs;
 
     @Data

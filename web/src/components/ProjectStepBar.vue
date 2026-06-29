@@ -1,7 +1,10 @@
 <script setup lang="ts">
-defineProps<{
-  steps: Array<{ node: string; status: string }>
-}>()
+withDefaults(
+  defineProps<{
+    steps?: Array<{ node: string; status: string }>
+  }>(),
+  { steps: () => [] }
+)
 </script>
 
 <template>

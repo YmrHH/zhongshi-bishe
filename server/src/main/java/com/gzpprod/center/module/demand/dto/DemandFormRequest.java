@@ -1,6 +1,7 @@
 package com.gzpprod.center.module.demand.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class DemandFormRequest {
     private String pilotType;
     private Integer expectedDays;
     private String contactName;
+    @Pattern(regexp = "^$|^1\\d{10}$", message = "联系电话须为11位手机号")
     private String contactPhone;
     private List<MaterialItem> materials;
 

@@ -1,9 +1,10 @@
 import http from './http'
 import type { ApiResult } from '@/types/api'
-import type { DemandDetail, DemandForm, DemandTodo, ProjectCreateResult } from '@/types/demand'
+import type { PageResult } from '@/types/page'
+import type { DemandDetail, DemandEnterpriseProject, DemandForm, DemandTodo, ProjectCreateResult } from '@/types/demand'
 
-export function fetchDemandTodos() {
-  return http.get<ApiResult<DemandTodo[]>>('/demand/todos')
+export function fetchDemandTodos(params?: { page?: number; pageSize?: number }) {
+  return http.get<ApiResult<PageResult<DemandTodo>>>('/demand/todos', { params })
 }
 
 export function createDemandProject(data: DemandForm) {
@@ -26,8 +27,21 @@ export function acceptRegisterDemand(projectId: number, remark?: string) {
   return http.post<ApiResult<DemandDetail>>(`/projects/${projectId}/demand/accept-register`, { remark })
 }
 
-export function verifyDemand(projectId: number, complete: boolean, opinion?: string) {
-  return http.post<ApiResult<DemandDetail>>(`/projects/${projectId}/demand/verify`, { complete, opinion })
+export function verifyDemand(projectId: number, complete: boolean, accepted?: boolean, opinion?: string) {
+  const body: { complete: boolean; accepted?: boolean; opinion?: string } = { complete, opinion }
+  if (complete && accepted !== undefined) body.accepted = accepted
+  return http.post<ApiResult<DemandDetail>>(`/projects/${projectId}/demand/verify`, body)
+}
+
+export type EnterpriseStageFilter = 'ALL' | 'DEMAND' | 'EVALUATION' | 'DISPATCH' | 'FEEDBACK' | 'ARCHIVE' | 'CLOSED'
+
+export function fetchEnterpriseDemandProjects(params?: {
+  page?: number
+  pageSize?: number
+  stageFilter?: EnterpriseStageFilter
+  keyword?: string
+}) {
+  return http.get<ApiResult<PageResult<DemandEnterpriseProject>>>('/demand/enterprise/projects', { params })
 }
 
 export function rejectDemand(projectId: number, reason: string) {

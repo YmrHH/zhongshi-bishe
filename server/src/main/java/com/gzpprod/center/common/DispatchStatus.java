@@ -36,7 +36,8 @@ public enum DispatchStatus {
     }
 
     public static Set<DispatchStatus> dispatcherTodos() {
-        return Set.of(MATCH, MATCH_FAILED, ASSIGNED, CONFIRMED, EXECUTING, EXEC_DONE);
+        return Set.of(MATCH, MATCH_FAILED, ASSIGNED, PENDING_RECEIVE, RECEIVED,
+                CONFIRMED, EXECUTING, EXEC_DONE);
     }
 
     public static Set<DispatchStatus> technicianTodos() {
@@ -44,6 +45,6 @@ public enum DispatchStatus {
     }
 
     public static Set<DispatchStatus> enterpriseTodos() {
-        return Set.of(EXECUTING, EXEC_DONE, CONFIRMED);
+        return Set.of(EXECUTING, PROGRESS_ACKED, EXEC_DONE, CONFIRMED);
     }
 }

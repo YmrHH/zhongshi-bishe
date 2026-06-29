@@ -59,7 +59,10 @@ class DispatchServiceTest {
     @Test
     void execConfirm_keepsDispatchStage() {
         when(projectMapper.selectById(10L)).thenReturn(project);
-        when(taskMapper.selectOne(any())).thenReturn(new DispatchTask());
+        DispatchTask task = new DispatchTask();
+        task.setProgressPct(100);
+        when(taskMapper.selectOne(any())).thenReturn(task);
+        when(progressMapper.selectList(any())).thenReturn(java.util.List.of());
         when(workflowLogMapper.selectList(any())).thenReturn(java.util.List.of());
         when(evaluationMapper.selectOne(any())).thenReturn(null);
         when(resourceMapper.selectList(any())).thenReturn(java.util.List.of());
@@ -76,6 +79,7 @@ class DispatchServiceTest {
         project.setStatus(DispatchStatus.EXEC_DONE.name());
         when(projectMapper.selectById(10L)).thenReturn(project);
         when(taskMapper.selectOne(any())).thenReturn(new DispatchTask());
+        when(progressMapper.selectList(any())).thenReturn(java.util.List.of());
         when(workflowLogMapper.selectList(any())).thenReturn(java.util.List.of());
         when(evaluationMapper.selectOne(any())).thenReturn(null);
         when(resourceMapper.selectList(any())).thenReturn(java.util.List.of());
@@ -94,7 +98,9 @@ class DispatchServiceTest {
         task.setId(5L);
         task.setProjectId(10L);
         task.setStatus("EXECUTING");
+        task.setProgressPct(100);
         when(taskMapper.selectOne(any())).thenReturn(task);
+        when(progressMapper.selectList(any())).thenReturn(java.util.List.of());
         when(workflowLogMapper.selectList(any())).thenReturn(java.util.List.of());
         when(evaluationMapper.selectOne(any())).thenReturn(null);
         when(resourceMapper.selectList(any())).thenReturn(java.util.List.of());

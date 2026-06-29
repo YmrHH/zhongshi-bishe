@@ -36,7 +36,7 @@ public enum ArchiveStatus {
     }
 
     public static Set<ArchiveStatus> auditorTodos() {
-        return Set.of(PENDING, LEDGER_INCOMPLETE, LEDGER_OK, CONFIRMED, COLLECTED,
+        return Set.of(PENDING, LEDGER_INCOMPLETE, LEDGER_OK, CONFIRMED,
                 BRIEF_GENERATED, BRIEF_PUBLISHED);
     }
 
